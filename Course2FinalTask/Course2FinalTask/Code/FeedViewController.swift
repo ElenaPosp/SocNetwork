@@ -9,13 +9,36 @@
 import UIKit
 
 class FeedViewController: UIViewController  {
+
+    lazy var feedTableView: UITableView = {
+        let table = UITableView(frame: self.view.frame)
+        return table
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        setupTableView()
+
         
-        view.frame = (view.superview?.frame)!
+    }
+
+    private func setupTableView() {
+        view.addSubview(feedTableView)
+        feedTableView.delegate = self
+        feedTableView.dataSource = self
+    }
+}
+
+extension FeedViewController: UITableViewDelegate {
+
+}
+
+extension FeedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }

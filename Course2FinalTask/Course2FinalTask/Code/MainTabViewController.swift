@@ -19,8 +19,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     func setup() {
         
-        let feedVC = FeedViewController()
-        let profileVC = ProfileViewController()
+        let feedVC = FeedNavigationViewController()
+        let profileVC = ProfileNavigationViewController()
         
         feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
