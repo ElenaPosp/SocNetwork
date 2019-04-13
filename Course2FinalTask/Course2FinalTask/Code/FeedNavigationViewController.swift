@@ -10,6 +10,6 @@ import UIKit
 
 class FeedNavigationViewController: UINavigationController {
     override func viewDidLoad() {
-        self.addChild(FeedViewController())
+        self.addChildViewController(FeedViewController())
     }
 }

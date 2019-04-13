@@ -10,6 +10,6 @@ import UIKit
 
 class ProfileNavigationViewController: UINavigationController {
     override func viewDidLoad() {
-        self.addChild(ProfileViewController())
+        self.addChildViewController(ProfileViewController())
     }
 }
