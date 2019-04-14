@@ -39,16 +39,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-fx-FPV">
-                        <rect key="frame" x="15" y="378" width="305" height="44"/>
+                        <rect key="frame" x="0.0" y="378" width="320" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-DS-g3e">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                                <rect key="frame" x="15" y="0.0" width="42" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="FTy-fT-LPK">
-                                <rect key="frame" x="269" y="8" width="28" height="28"/>
+                                <rect key="frame" x="288" y="10" width="24" height="24"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FTy-fT-LPK" secondAttribute="height" multiplier="1:1" id="ZZP-lR-6y6"/>
@@ -59,11 +59,11 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="2El-bL-wfK"/>
                             <constraint firstItem="EI7-DS-g3e" firstAttribute="top" secondItem="JQl-fx-FPV" secondAttribute="top" id="LZ3-zo-R0W"/>
-                            <constraint firstItem="FTy-fT-LPK" firstAttribute="top" secondItem="JQl-fx-FPV" secondAttribute="top" constant="8" id="YXy-03-TbS"/>
+                            <constraint firstItem="FTy-fT-LPK" firstAttribute="top" secondItem="JQl-fx-FPV" secondAttribute="top" constant="10" id="YXy-03-TbS"/>
                             <constraint firstAttribute="bottom" secondItem="EI7-DS-g3e" secondAttribute="bottom" id="bRN-xM-CF1"/>
-                            <constraint firstAttribute="bottom" secondItem="FTy-fT-LPK" secondAttribute="bottom" constant="8" id="egE-ng-VVC"/>
+                            <constraint firstAttribute="bottom" secondItem="FTy-fT-LPK" secondAttribute="bottom" constant="10" id="egE-ng-VVC"/>
                             <constraint firstAttribute="trailing" secondItem="FTy-fT-LPK" secondAttribute="trailing" constant="8" id="feK-5r-acV"/>
-                            <constraint firstItem="EI7-DS-g3e" firstAttribute="leading" secondItem="JQl-fx-FPV" secondAttribute="leading" id="nzp-S1-SOQ"/>
+                            <constraint firstItem="EI7-DS-g3e" firstAttribute="leading" secondItem="JQl-fx-FPV" secondAttribute="leading" constant="15" id="nzp-S1-SOQ"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB9-gb-485">
@@ -81,7 +81,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Umz-B7-yqh" secondAttribute="trailing" constant="15" id="3Og-FT-CRM"/>
-                    <constraint firstItem="JQl-fx-FPV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="6rN-wS-DO6"/>
+                    <constraint firstItem="JQl-fx-FPV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6rN-wS-DO6"/>
                     <constraint firstItem="Yc1-Cm-lnw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="8rx-jL-WSD"/>
                     <constraint firstItem="JQl-fx-FPV" firstAttribute="top" secondItem="1ec-Yw-JRc" secondAttribute="bottom" id="8vJ-GU-GOX"/>
                     <constraint firstItem="Umz-B7-yqh" firstAttribute="top" secondItem="dy4-oW-sQY" secondAttribute="bottom" id="GHT-kX-9yZ"/>

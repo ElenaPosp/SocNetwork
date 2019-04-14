@@ -42,7 +42,9 @@ class FeedViewController: UIViewController  {
 }
 
 extension FeedViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        feedTableView.deselectRow(at: indexPath, animated: false)
+    }
 }
 
 extension FeedViewController: UITableViewDataSource {
@@ -53,8 +55,7 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         let cell = feedTableView.dequeueReusableCell(withIdentifier: cellIdentifier,
-                                                     for: indexPath) as! FeedTableViewCell
-        
+                                                                for: indexPath) as! FeedTableViewCell
         cell.authorAvatarImageView.image = post.authorAvatar
         cell.authorNameLabel.text = post.authorUsername
         cell.postImageView.image = post.image
@@ -62,6 +63,7 @@ extension FeedViewController: UITableViewDataSource {
         cell.likesLabel.text = "Likes: \(post.likedByCount)"
         cell.postDescriptionLabel.text = post.description
         cell.likeImageView.tintColor = .lightGray
+        
         return cell
     }
 }

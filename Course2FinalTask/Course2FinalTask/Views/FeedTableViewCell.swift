@@ -20,6 +20,29 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var postDescriptionLabel: UILabel!
     
+    var delegate:FeedCellDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupRecognizers()
+    }
+    
+    func setupRecognizers() {
+        let gr = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        gr.numberOfTapsRequired = 1
+        authorAvatarImageView.addGestureRecognizer(gr)
+    }
+    
+    @objc func didSelectAuthorAvatar(){
+        print("AVATAR")
+        delegate?.didTapAuthorAvatar(withID: "1")
+    }
+}
+
+
+protocol FeedCellDelegate {
+    func didTapAuthorAvatar(withID: String)
+    func didLikePhoto()
+    func didTapLikesCount()
 
 }

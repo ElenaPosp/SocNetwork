@@ -9,7 +9,26 @@
 import UIKit
 
 class ProfileNavigationViewController: UINavigationController {
+    
+    
     override func viewDidLoad() {
-        self.addChildViewController(ProfileViewController())
+        let profVC = ProfileViewController()
+        profVC.navDelegate = self
+        self.addChildViewController(profVC)
+        
+        
     }
+}
+
+
+extension ProfileNavigationViewController: ProfileViewControllerDelegate {
+    func didSelectFollowers() {
+        print("sdsdc")
+    }
+    
+    func didSelectFollowered() {
+        print("sdcsd")
+    }
+    
+    
 }
