@@ -67,7 +67,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB9-gb-485">
-                        <rect key="frame" x="15" y="422" width="290" height="59.5"/>
+                        <rect key="frame" x="15" y="422" width="290" height="51.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                     <constraint firstItem="pB9-gb-485" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Qy1-pj-7iA"/>
                     <constraint firstAttribute="trailing" secondItem="pB9-gb-485" secondAttribute="trailing" constant="15" id="QzD-mh-4o1"/>
                     <constraint firstAttribute="trailing" secondItem="dy4-oW-sQY" secondAttribute="trailing" constant="15" id="RLn-yk-avv"/>
-                    <constraint firstAttribute="bottom" secondItem="pB9-gb-485" secondAttribute="bottom" id="SeO-zO-aXs"/>
+                    <constraint firstAttribute="bottom" secondItem="pB9-gb-485" secondAttribute="bottom" constant="8" id="SeO-zO-aXs"/>
                     <constraint firstAttribute="trailing" secondItem="JQl-fx-FPV" secondAttribute="trailing" id="VaR-Gi-Wka"/>
                     <constraint firstAttribute="trailing" secondItem="1ec-Yw-JRc" secondAttribute="trailing" id="WrG-l8-cJJ"/>
                     <constraint firstItem="1ec-Yw-JRc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XjK-k2-lVB"/>

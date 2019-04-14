@@ -14,6 +14,12 @@ class FeedViewController: UIViewController  {
     let posts = DataProviders.shared.postsDataProvider.feed()
     let cellIdentifier = String(describing: FeedTableViewCell.self)
     
+    let dateFormatter: DateFormatter = {
+        let a = DateFormatter()
+        a.dateFormat = "MMM dd, yyyy hh:mm:ss a"
+        return a
+    }()
+    
     lazy var feedTableView: UITableView = {
         let table = UITableView(frame: self.view.frame)
         return table
@@ -52,7 +58,7 @@ extension FeedViewController: UITableViewDataSource {
         cell.authorAvatarImageView.image = post.authorAvatar
         cell.authorNameLabel.text = post.authorUsername
         cell.postImageView.image = post.image
-        cell.postTimeLabel.text = post.createdTime.description
+        cell.postTimeLabel.text = dateFormatter.string(from: post.createdTime)
         cell.likesLabel.text = "Likes: \(post.likedByCount)"
         cell.postDescriptionLabel.text = post.description
         cell.likeImageView.tintColor = .lightGray
