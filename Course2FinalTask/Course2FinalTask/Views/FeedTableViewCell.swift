@@ -24,13 +24,27 @@ class FeedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupRecognizers()
+        setupInteractive()
     }
     
-    func setupRecognizers() {
-        let gr = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
-        gr.numberOfTapsRequired = 1
-        authorAvatarImageView.addGestureRecognizer(gr)
+    func setupInteractive() {
+        
+        authorAvatarImageView.isUserInteractionEnabled = true
+        let g1 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        authorAvatarImageView.addGestureRecognizer(g1)
+        
+        likesLabel.isUserInteractionEnabled = true
+        let g2 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        likesLabel.addGestureRecognizer(g2)
+        
+        likeImageView.isUserInteractionEnabled = true
+        let g3 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        likeImageView.addGestureRecognizer(g3)
+        
+        postImageView.isUserInteractionEnabled = true
+        let g4 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        g4.numberOfTapsRequired = 2
+        postImageView.addGestureRecognizer(g4)
     }
     
     @objc func didSelectAuthorAvatar(){

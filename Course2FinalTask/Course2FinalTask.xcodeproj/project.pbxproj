@@ -15,7 +15,6 @@
 		0BA76501226224270026AA6A /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA764FB226224270026AA6A /* MainTabViewController.swift */; };
 		0BA76516226276C00026AA6A /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA76514226276C00026AA6A /* FeedTableViewCell.swift */; };
 		0BA76517226276C00026AA6A /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA76515226276C00026AA6A /* FeedTableViewCell.xib */; };
-		0BA765192263CA290026AA6A /* CollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA765182263CA290026AA6A /* CollectionView.storyboard */; };
 		0BA7651C2263CC630026AA6A /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7651A2263CC630026AA6A /* ProfileCollectionViewCell.swift */; };
 		0BA7651D2263CC630026AA6A /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */; };
 		0BA765202263CEDC0026AA6A /* ProfileFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */; };
@@ -49,7 +48,6 @@
 		0BA764FB226224270026AA6A /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		0BA76514226276C00026AA6A /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		0BA76515226276C00026AA6A /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
-		0BA765182263CA290026AA6A /* CollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CollectionView.storyboard; sourceTree = "<group>"; };
 		0BA7651A2263CC630026AA6A /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstCell.swift; sourceTree = "<group>"; };
@@ -119,12 +117,11 @@
 			children = (
 				0BA764F7226224270026AA6A /* LaunchScreen.storyboard */,
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
-				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
 				0BA764F9226224270026AA6A /* FeedNavigationViewController.swift */,
 				0BA764F8226224270026AA6A /* FeedViewController.swift */,
-				0BA764FA226224270026AA6A /* ProfileNavigationViewController.swift */,
-				0BA765182263CA290026AA6A /* CollectionView.storyboard */,
 				0BA764F6226224270026AA6A /* ProfileViewController.swift */,
+				0BA764FA226224270026AA6A /* ProfileNavigationViewController.swift */,
+				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -208,7 +205,6 @@
 				0BA76517226276C00026AA6A /* FeedTableViewCell.xib in Resources */,
 				74B7925F202B3254006BCB41 /* Assets.xcassets in Resources */,
 				0BA764FD226224270026AA6A /* LaunchScreen.storyboard in Resources */,
-				0BA765192263CA290026AA6A /* CollectionView.storyboard in Resources */,
 				0BA765212263CEDC0026AA6A /* ProfileFirstCell.xib in Resources */,
 				0BA7651D2263CC630026AA6A /* ProfileCollectionViewCell.xib in Resources */,
 			);
