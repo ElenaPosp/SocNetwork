@@ -1,0 +1,6 @@
+# Specify filepatterns you want git to ignore.
+Course2FinalTask/Course2FinalTask.xcodeproj/project.xcworkspace/xcuserdata/*
+Course2FinalTask/Course2FinalTask.xcodeproj/xcuserdata/*
+*.xcbkptlist
+
+
