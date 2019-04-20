@@ -9,7 +9,12 @@
 import UIKit
 
 class ProfileFirstCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var followersLabel: UILabel!
+    @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

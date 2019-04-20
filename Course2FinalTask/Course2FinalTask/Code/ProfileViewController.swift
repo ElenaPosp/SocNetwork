@@ -10,53 +10,83 @@ import UIKit
 import DataProvider
 
 class ProfileViewController: UIViewController {
-    
+
     let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
+    let firstCellIdentifier = String(describing: ProfileFirstCell.self)
+
     var profile = DataProviders.shared.usersDataProvider.currentUser()
     lazy var posts: [Post] = {
         DataProviders.shared.postsDataProvider.findPosts(by: profile.id) ?? []
     }()
+
     var navDelegate: ProfileViewControllerDelegate?
-    
+
     lazy var profileCollectionView: UICollectionView = {
         let a = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
         return a
     }()
-    
+
     let userProfile = DataProviders.shared.usersDataProvider.currentUser()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
+    }
+
+    private func setupCollectionView() {
         view.addSubview(profileCollectionView)
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
-        
-        let nib = UINib(nibName: collectionCellIdentifier, bundle: nil)
-        profileCollectionView.register(nib, forCellWithReuseIdentifier: collectionCellIdentifier)
+        profileCollectionView.backgroundColor = .white
+
+        let nib1 = UINib(nibName: collectionCellIdentifier, bundle: nil)
+        profileCollectionView.register(nib1, forCellWithReuseIdentifier: collectionCellIdentifier)
+
+        let nib2 = UINib(nibName: firstCellIdentifier, bundle: nil)
+        profileCollectionView.register(nib2, forCellWithReuseIdentifier: firstCellIdentifier)
     }
 }
 
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width
+        if indexPath.row == 0 {
+            return CGSize(width: width, height: 86)
+        }
+        return CGSize(width: Int(width/3), height: Int(width/3))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 extension ProfileViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return section == 0 ? 1 : posts.count
         return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if indexPath.row == 0 {
+            let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier, for: indexPath as IndexPath) as! ProfileFirstCell
+            firstCell.avatarImageView.image = profile.avatar
+            firstCell.avatarImageView.layer.cornerRadius = firstCell.avatarImageView.frame.width/2
+            firstCell.userNameLabel.text = profile.fullName
+            firstCell.followersLabel.text = "Followers: \(profile.followedByCount)"
+            firstCell.followingLabel.text = "Following: \(profile.followsCount)"
+            return firstCell
+        }
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath as IndexPath) as! ProfileCollectionViewCell
-        cell.image.image = posts[indexPath.row].image
+        cell.image.image = posts[indexPath.row-1].image
         return cell
     }
-    
-    
 }
-
-
 
 protocol ProfileViewControllerDelegate {
     func didSelectFollowers()
