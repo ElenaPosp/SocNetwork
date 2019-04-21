@@ -7,9 +7,29 @@
 //
 
 import UIKit
+import DataProvider
 
 class FeedNavigationViewController: UINavigationController {
     override func viewDidLoad() {
-        self.addChildViewController(FeedViewController())
+        let feedVC = FeedViewController()
+        feedVC.navDelegate = self
+        self.addChildViewController(feedVC)
+    }
+}
+
+extension FeedNavigationViewController: FeedCellDelegate {
+    func didTapLikesCount(postID: Post.Identifier) {
+        //
+    }
+
+    func didTapAuthorAvatar(withID ID: User.Identifier) {
+        let vc = ProfileViewController()
+        guard let user = DataProviders.shared.usersDataProvider.user(with: ID) else { return }
+        vc.profile = user
+        self.pushViewController(vc, animated: true)
+    }
+
+    func didLikePhoto() {
+        
     }
 }

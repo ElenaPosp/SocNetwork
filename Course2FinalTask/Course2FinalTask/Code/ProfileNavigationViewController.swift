@@ -7,19 +7,17 @@
 //
 
 import UIKit
+import DataProvider
 
 class ProfileNavigationViewController: UINavigationController {
-    
     
     override func viewDidLoad() {
         let profVC = ProfileViewController()
         profVC.navDelegate = self
+        profVC.profile = DataProviders.shared.usersDataProvider.currentUser()
         self.addChildViewController(profVC)
-        
-        
     }
 }
-
 
 extension ProfileNavigationViewController: ProfileViewControllerDelegate {
     func didSelectFollowers() {

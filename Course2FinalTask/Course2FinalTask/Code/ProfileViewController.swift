@@ -14,10 +14,8 @@ class ProfileViewController: UIViewController {
     let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
     let firstCellIdentifier = String(describing: ProfileFirstCell.self)
 
-    var profile = DataProviders.shared.usersDataProvider.currentUser()
-    lazy var posts: [Post] = {
-        DataProviders.shared.postsDataProvider.findPosts(by: profile.id) ?? []
-    }()
+    var profile: User?
+    var posts: [Post] = []
 
     var navDelegate: ProfileViewControllerDelegate?
 
@@ -34,6 +32,11 @@ class ProfileViewController: UIViewController {
     }
 
     private func setupCollectionView() {
+        if let id = profile?.id {
+            posts = DataProviders.shared.postsDataProvider.findPosts(by: id) ?? []
+        }
+        
+        
         view.addSubview(profileCollectionView)
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
@@ -71,14 +74,19 @@ extension ProfileViewController:UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
+        guard profile != nil else {
+            return UICollectionViewCell()
+        }
+        
         if indexPath.row == 0 {
+            
             let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier, for: indexPath as IndexPath) as! ProfileFirstCell
-            firstCell.avatarImageView.image = profile.avatar
+            firstCell.avatarImageView.image = profile!.avatar
             firstCell.avatarImageView.layer.cornerRadius = firstCell.avatarImageView.frame.width/2
-            firstCell.userNameLabel.text = profile.fullName
-            firstCell.followersLabel.text = "Followers: \(profile.followedByCount)"
-            firstCell.followingLabel.text = "Following: \(profile.followsCount)"
+            firstCell.userNameLabel.text = profile!.fullName
+            firstCell.followersLabel.text = "Followers: \(profile!.followedByCount)"
+            firstCell.followingLabel.text = "Following: \(profile!.followsCount)"
             return firstCell
         }
 

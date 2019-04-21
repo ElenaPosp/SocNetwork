@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import DataProvider
+
+protocol FeedCellDelegate {
+    func didTapAuthorAvatar(withID ID: User.Identifier)
+    func didLikePhoto()
+    func didTapLikesCount(postID: Post.Identifier)
+}
 
 class FeedTableViewCell: UITableViewCell {
 
@@ -20,7 +27,8 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var postDescriptionLabel: UILabel!
     
-    var delegate:FeedCellDelegate?
+    var postID: Post.Identifier?
+    var delegate: FeedCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +42,7 @@ class FeedTableViewCell: UITableViewCell {
         authorAvatarImageView.addGestureRecognizer(g1)
         
         likesLabel.isUserInteractionEnabled = true
-        let g2 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        let g2 = UITapGestureRecognizer(target: self, action: #selector(didTaplike))
         likesLabel.addGestureRecognizer(g2)
         
         likeImageView.isUserInteractionEnabled = true
@@ -42,21 +50,30 @@ class FeedTableViewCell: UITableViewCell {
         likeImageView.addGestureRecognizer(g3)
         
         postImageView.isUserInteractionEnabled = true
-        let g4 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        let g4 = UITapGestureRecognizer(target: self, action: #selector(didTapBiglike))
         g4.numberOfTapsRequired = 2
         postImageView.addGestureRecognizer(g4)
     }
     
     @objc func didSelectAuthorAvatar(){
-        print("AVATAR")
-        delegate?.didTapAuthorAvatar(withID: "1")
+        guard
+            postID != nil,
+            let authtorID = DataProviders.shared.postsDataProvider.post(with: postID!)?.author
+        else { return }
+        delegate?.didTapAuthorAvatar(withID: authtorID)
     }
+
+    @objc func didTaplike(){
+        guard postID != nil else {
+            return
+        }
+    }
+
+    @objc func didTapBiglike(){
+        guard postID != nil else {
+            return
+        }
+    }
+    
 }
 
-
-protocol FeedCellDelegate {
-    func didTapAuthorAvatar(withID: String)
-    func didLikePhoto()
-    func didTapLikesCount()
-
-}

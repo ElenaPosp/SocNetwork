@@ -11,6 +11,8 @@ import DataProvider
 
 class FeedViewController: UIViewController  {
 
+    var navDelegate: FeedCellDelegate?
+    
     let posts = DataProviders.shared.postsDataProvider.feed()
     let cellIdentifier = String(describing: FeedTableViewCell.self)
     
@@ -63,7 +65,8 @@ extension FeedViewController: UITableViewDataSource {
         cell.likesLabel.text = "Likes: \(post.likedByCount)"
         cell.postDescriptionLabel.text = post.description
         cell.likeImageView.tintColor = .lightGray
-        
+        cell.delegate = navDelegate
+        cell.postID = post.id
         return cell
     }
 }
