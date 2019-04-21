@@ -19,6 +19,7 @@
 		0BA7651D2263CC630026AA6A /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */; };
 		0BA765202263CEDC0026AA6A /* ProfileFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */; };
 		0BA765212263CEDC0026AA6A /* ProfileFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA7651F2263CEDB0026AA6A /* ProfileFirstCell.xib */; };
+		0BA76525226C59090026AA6A /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA76524226C59090026AA6A /* UsersListViewController.swift */; };
 		7484B05420441FD000BDE1A6 /* DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7484B05320441FD000BDE1A6 /* DataProvider.framework */; };
 		7484B05520441FD000BDE1A6 /* DataProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7484B05320441FD000BDE1A6 /* DataProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B79257202B3254006BCB41 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFirstCell.swift; sourceTree = "<group>"; };
 		0BA7651F2263CEDB0026AA6A /* ProfileFirstCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFirstCell.xib; sourceTree = "<group>"; };
+		0BA76524226C59090026AA6A /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		7484B05320441FD000BDE1A6 /* DataProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataProvider.framework; sourceTree = "<group>"; };
 		74B79254202B3254006BCB41 /* Course2FinalTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Course2FinalTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B79257202B3254006BCB41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,10 +76,10 @@
 		0BA7650F2262636E0026AA6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */,
-				0BA7651F2263CEDB0026AA6A /* ProfileFirstCell.xib */,
 				0BA76514226276C00026AA6A /* FeedTableViewCell.swift */,
 				0BA76515226276C00026AA6A /* FeedTableViewCell.xib */,
+				0BA7651E2263CEDB0026AA6A /* ProfileFirstCell.swift */,
+				0BA7651F2263CEDB0026AA6A /* ProfileFirstCell.xib */,
 				0BA7651A2263CC630026AA6A /* ProfileCollectionViewCell.swift */,
 				0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */,
 			);
@@ -117,11 +119,12 @@
 			children = (
 				0BA764F7226224270026AA6A /* LaunchScreen.storyboard */,
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
+				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
 				0BA764F9226224270026AA6A /* FeedNavigationViewController.swift */,
 				0BA764F8226224270026AA6A /* FeedViewController.swift */,
-				0BA764F6226224270026AA6A /* ProfileViewController.swift */,
 				0BA764FA226224270026AA6A /* ProfileNavigationViewController.swift */,
-				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
+				0BA764F6226224270026AA6A /* ProfileViewController.swift */,
+				0BA76524226C59090026AA6A /* UsersListViewController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				0BA764FC226224270026AA6A /* ProfileViewController.swift in Sources */,
 				0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
+				0BA76525226C59090026AA6A /* UsersListViewController.swift in Sources */,
 				0BA76500226224270026AA6A /* ProfileNavigationViewController.swift in Sources */,
 				0BA76501226224270026AA6A /* MainTabViewController.swift in Sources */,
 			);

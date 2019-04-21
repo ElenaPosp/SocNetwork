@@ -35,8 +35,7 @@ class ProfileViewController: UIViewController {
         if let id = profile?.id {
             posts = DataProviders.shared.postsDataProvider.findPosts(by: id) ?? []
         }
-        
-        
+
         view.addSubview(profileCollectionView)
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
@@ -78,7 +77,7 @@ extension ProfileViewController:UICollectionViewDataSource {
         guard profile != nil else {
             return UICollectionViewCell()
         }
-        
+
         if indexPath.row == 0 {
             
             let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier, for: indexPath as IndexPath) as! ProfileFirstCell
@@ -87,6 +86,8 @@ extension ProfileViewController:UICollectionViewDataSource {
             firstCell.userNameLabel.text = profile!.fullName
             firstCell.followersLabel.text = "Followers: \(profile!.followedByCount)"
             firstCell.followingLabel.text = "Following: \(profile!.followsCount)"
+            firstCell.navDelegate = navDelegate
+            firstCell.userID = profile?.id
             return firstCell
         }
 
@@ -94,9 +95,4 @@ extension ProfileViewController:UICollectionViewDataSource {
         cell.image.image = posts[indexPath.row-1].image
         return cell
     }
-}
-
-protocol ProfileViewControllerDelegate {
-    func didSelectFollowers()
-    func didSelectFollowered()
 }

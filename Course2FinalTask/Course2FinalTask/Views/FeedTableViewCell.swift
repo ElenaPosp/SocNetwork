@@ -42,11 +42,11 @@ class FeedTableViewCell: UITableViewCell {
         authorAvatarImageView.addGestureRecognizer(g1)
         
         likesLabel.isUserInteractionEnabled = true
-        let g2 = UITapGestureRecognizer(target: self, action: #selector(didTaplike))
+        let g2 = UITapGestureRecognizer(target: self, action: #selector(didTapLikesCount))
         likesLabel.addGestureRecognizer(g2)
         
         likeImageView.isUserInteractionEnabled = true
-        let g3 = UITapGestureRecognizer(target: self, action: #selector(didSelectAuthorAvatar))
+        let g3 = UITapGestureRecognizer(target: self, action: #selector(didTaplike))
         likeImageView.addGestureRecognizer(g3)
         
         postImageView.isUserInteractionEnabled = true
@@ -74,6 +74,14 @@ class FeedTableViewCell: UITableViewCell {
             return
         }
     }
+    
+    @objc func didTapLikesCount() {
+        guard postID != nil else {
+            return
+        }
+        delegate?.didTapLikesCount(postID: postID!)
+    }
+    
     
 }
 

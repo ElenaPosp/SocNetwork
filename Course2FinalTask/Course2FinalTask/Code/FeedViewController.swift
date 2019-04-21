@@ -57,7 +57,7 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.row]
         let cell = feedTableView.dequeueReusableCell(withIdentifier: cellIdentifier,
-                                                                for: indexPath) as! FeedTableViewCell
+                                                     for: indexPath) as! FeedTableViewCell
         cell.authorAvatarImageView.image = post.authorAvatar
         cell.authorNameLabel.text = post.authorUsername
         cell.postImageView.image = post.image

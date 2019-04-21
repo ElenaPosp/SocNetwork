@@ -9,8 +9,15 @@
 import UIKit
 import DataProvider
 
+
+protocol ProfileFirstCellDelegate {
+
+    func didTapFollowers(userID id: User.Identifier)
+    func didTapFollowing(userID id: User.Identifier)
+}
+
 class ProfileNavigationViewController: UINavigationController {
-    
+
     override func viewDidLoad() {
         let profVC = ProfileViewController()
         profVC.navDelegate = self
@@ -19,14 +26,16 @@ class ProfileNavigationViewController: UINavigationController {
     }
 }
 
-extension ProfileNavigationViewController: ProfileViewControllerDelegate {
-    func didSelectFollowers() {
-        print("sdsdc")
+extension ProfileNavigationViewController: ProfileFirstCellDelegate {
+    func didTapFollowers(userID id: User.Identifier) {
+        let vc = UsersListViewController()
+        vc.users = DataProviders.shared.usersDataProvider.usersFollowingUser(with: id) ?? []
+        self.pushViewController(vc, animated: true)
     }
-    
-    func didSelectFollowered() {
-        print("sdcsd")
+
+    func didTapFollowing(userID id: User.Identifier) {
+        let vc = UsersListViewController()
+        vc.users = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id) ?? []
+        self.pushViewController(vc, animated: true)
     }
-    
-    
 }
