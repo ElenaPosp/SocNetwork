@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
     var profile: User?
     var posts: [Post] = []
 
-    var navDelegate: ProfileViewControllerDelegate?
+    var navDelegate: ProfileFirstCellDelegate?
 
     lazy var profileCollectionView: UICollectionView = {
         let a = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())

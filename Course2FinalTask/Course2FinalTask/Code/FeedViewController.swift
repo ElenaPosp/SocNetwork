@@ -62,7 +62,6 @@ extension FeedViewController: UITableViewDataSource {
         cell.authorNameLabel.text = post.authorUsername
         cell.postImageView.image = post.image
         cell.postTimeLabel.text = dateFormatter.string(from: post.createdTime)
-        cell.likesLabel.text = "Likes: \(post.likedByCount)"
         cell.postDescriptionLabel.text = post.description
         cell.likeImageView.tintColor = .lightGray
         cell.delegate = navDelegate

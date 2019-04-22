@@ -78,6 +78,9 @@
                             <constraint firstAttribute="width" secondItem="1ec-Yw-JRc" secondAttribute="height" multiplier="1:1" id="heP-Nh-Smo"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bigLike" translatesAutoresizingMaskIntoConstraints="NO" id="bnk-it-v4G">
+                        <rect key="frame" x="81" y="154" width="158" height="129"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Umz-B7-yqh" secondAttribute="trailing" constant="15" id="3Og-FT-CRM"/>
@@ -93,7 +96,9 @@
                     <constraint firstAttribute="trailing" secondItem="1ec-Yw-JRc" secondAttribute="trailing" id="WrG-l8-cJJ"/>
                     <constraint firstItem="1ec-Yw-JRc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XjK-k2-lVB"/>
                     <constraint firstItem="dy4-oW-sQY" firstAttribute="leading" secondItem="Yc1-Cm-lnw" secondAttribute="trailing" constant="8" id="YVF-XK-Jg5"/>
+                    <constraint firstItem="bnk-it-v4G" firstAttribute="centerX" secondItem="1ec-Yw-JRc" secondAttribute="centerX" id="dIr-Qh-HFS"/>
                     <constraint firstItem="Yc1-Cm-lnw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fj5-9B-QKE"/>
+                    <constraint firstItem="bnk-it-v4G" firstAttribute="centerY" secondItem="1ec-Yw-JRc" secondAttribute="centerY" id="gTs-ga-EN3"/>
                     <constraint firstItem="Umz-B7-yqh" firstAttribute="leading" secondItem="Yc1-Cm-lnw" secondAttribute="trailing" constant="8" id="hpZ-Qf-Tse"/>
                     <constraint firstItem="pB9-gb-485" firstAttribute="top" secondItem="JQl-fx-FPV" secondAttribute="bottom" id="kiE-ez-LkW"/>
                     <constraint firstItem="dy4-oW-sQY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="oIU-0i-RE6"/>
@@ -104,6 +109,7 @@
             <connections>
                 <outlet property="authorAvatarImageView" destination="Yc1-Cm-lnw" id="jov-aq-Hye"/>
                 <outlet property="authorNameLabel" destination="dy4-oW-sQY" id="GiS-sW-T3K"/>
+                <outlet property="bigLikeImageView" destination="bnk-it-v4G" id="Mol-5R-dyh"/>
                 <outlet property="likeImageView" destination="FTy-fT-LPK" id="J8d-vZ-NPt"/>
                 <outlet property="likesLabel" destination="EI7-DS-g3e" id="nl0-nY-iMQ"/>
                 <outlet property="postDescriptionLabel" destination="pB9-gb-485" id="QEw-2L-agU"/>
@@ -114,6 +120,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="bigLike" width="100" height="100"/>
         <image name="like" width="25" height="25"/>
     </resources>
 </document>
