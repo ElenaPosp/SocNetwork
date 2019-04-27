@@ -16,23 +16,23 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         setup()
     }
 
-    func setup() {
-        
+    private func setup() {
+
         let feedVC = FeedViewController()
         let navFeedVC = FeedNavigationViewController(rootViewController: feedVC)
-        feedVC.navDelegate = navFeedVC
+        feedVC.delegate = navFeedVC
         feedVC.navigationItem.title = "Feed"
         
         let profileVC = ProfileViewController()
         let navProfileVC = ProfileNavigationViewController(rootViewController: profileVC)
-        profileVC.navDelegate = navProfileVC
+        profileVC.delegate = navProfileVC
         profileVC.profile = DataProviders.shared.usersDataProvider.currentUser()
         profileVC.isMain = true
         profileVC.navigationItem.title = "Profile"
         
-        
         navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
         navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
+
         self.setViewControllers([navFeedVC,navProfileVC], animated: true)
     }
 }

@@ -15,16 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
         setupHierarhy()
         return true
     }
 
     private func setupHierarhy() {
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        
+
         let rootVC = MainTabViewController()
-        
+
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }

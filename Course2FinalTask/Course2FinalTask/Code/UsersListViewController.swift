@@ -11,7 +11,8 @@ import UIKit
 import DataProvider
 
 protocol UsersListDelegare {
-    func openPrifile(withID id: User.Identifier)
+
+    func openProfile(withID id: User.Identifier)
 }
 
 class UsersListViewController: UIViewController {
@@ -43,16 +44,18 @@ class UsersListViewController: UIViewController {
 extension UsersListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        delegate?.openPrifile(withID: users[indexPath.row].id)
+        delegate?.openProfile(withID: users[indexPath.row].id)
     }
 }
 
 extension UsersListViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let newCell = usersTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         newCell.textLabel?.text = users[indexPath.row].fullName
         newCell.imageView?.image = users[indexPath.row].avatar

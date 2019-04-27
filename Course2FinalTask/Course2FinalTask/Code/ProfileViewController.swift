@@ -18,19 +18,16 @@ class ProfileViewController: UIViewController {
     var profile: User?
     var posts: [Post] = []
 
-    var navDelegate: ProfileFirstCellDelegate?
+    var delegate: ProfileFirstCellDelegate?
 
     lazy var profileCollectionView: UICollectionView = {
-        let a = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-        return a
+        return UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
     }()
-
-    let userProfile = DataProviders.shared.usersDataProvider.currentUser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        
+
         if !isMain {
             setupNavigationBar()
         }
@@ -46,19 +43,20 @@ class ProfileViewController: UIViewController {
         profileCollectionView.dataSource = self
         profileCollectionView.backgroundColor = .white
 
-        let nib1 = UINib(nibName: collectionCellIdentifier, bundle: nil)
-        profileCollectionView.register(nib1, forCellWithReuseIdentifier: collectionCellIdentifier)
+        let cell = UINib(nibName: collectionCellIdentifier, bundle: nil)
+        profileCollectionView.register(cell, forCellWithReuseIdentifier: collectionCellIdentifier)
 
-        let nib2 = UINib(nibName: firstCellIdentifier, bundle: nil)
-        profileCollectionView.register(nib2, forCellWithReuseIdentifier: firstCellIdentifier)
+        let firstCell = UINib(nibName: firstCellIdentifier, bundle: nil)
+        profileCollectionView.register(firstCell, forCellWithReuseIdentifier: firstCellIdentifier)
     }
-    
-    func setupNavigationBar() {
+
+    private func setupNavigationBar() {
         navigationItem.title = profile?.fullName
     }
 }
 
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
         if indexPath.row == 0 {
@@ -77,30 +75,33 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ProfileViewController:UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard profile != nil else {
+
+        guard let profile = profile else {
             return UICollectionViewCell()
         }
 
         if indexPath.row == 0 {
-            
-            let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier, for: indexPath as IndexPath) as! ProfileFirstCell
-            firstCell.avatarImageView.image = profile!.avatar
+
+            let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier,
+                                                               for: indexPath as IndexPath) as! ProfileFirstCell
+            firstCell.avatarImageView.image = profile.avatar
             firstCell.avatarImageView.layer.cornerRadius = firstCell.avatarImageView.frame.width/2
-            firstCell.userNameLabel.text = profile!.fullName
-            firstCell.followersLabel.text = "Followers: \(profile!.followedByCount)"
-            firstCell.followingLabel.text = "Following: \(profile!.followsCount)"
-            firstCell.navDelegate = navDelegate
-            firstCell.userID = profile?.id
+            firstCell.userNameLabel.text = profile.fullName
+            firstCell.followersLabel.text = "Followers: \(profile.followedByCount)"
+            firstCell.followingLabel.text = "Following: \(profile.followsCount)"
+            firstCell.delegate = delegate
+            firstCell.userID = profile.id
             return firstCell
         }
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier, for: indexPath as IndexPath) as! ProfileCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier,
+                                                      for: indexPath as IndexPath) as! ProfileCollectionViewCell
         cell.image.image = posts[indexPath.row-1].image
         return cell
     }

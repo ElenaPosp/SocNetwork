@@ -14,22 +14,22 @@ class FeedNavigationViewController: UINavigationController {
 }
 
 extension FeedNavigationViewController: FeedCellDelegate {
+
     func didTapLikesCount(postID: Post.Identifier) {
         let vc = UsersListViewController()
         vc.delegate = self
-        let userss = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)?.compactMap({
+        let users = DataProviders.shared.postsDataProvider.usersLikedPost(with: postID)?.compactMap({
             DataProviders.shared.usersDataProvider.user(with: $0)
         })
-        vc.users = userss ?? []
-        
+        vc.users = users ?? []
         self.pushViewController(vc, animated: true)
     }
 
-    func didTapAuthorAvatar(withID ID: User.Identifier) {
+    func didTapAuthorAvatar(withID id: User.Identifier) {
         let vc = ProfileViewController()
-        guard let user = DataProviders.shared.usersDataProvider.user(with: ID) else { return }
+        guard let user = DataProviders.shared.usersDataProvider.user(with: id) else { return }
         vc.profile = user
-        vc.navDelegate = self
+        vc.delegate = self
         self.pushViewController(vc, animated: true)
     }
 }
@@ -52,13 +52,12 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
 }
 
 extension FeedNavigationViewController: UsersListDelegare {
-    func openPrifile(withID id: User.Identifier) {
+
+    func openProfile(withID id: User.Identifier) {
         let vc = ProfileViewController()
         guard let user = DataProviders.shared.usersDataProvider.user(with: id) else { return }
         vc.profile = user
-        vc.navDelegate = self
+        vc.delegate = self
         self.pushViewController(vc, animated: true)
     }
-    
-    
 }

@@ -10,14 +10,20 @@ import UIKit
 import DataProvider
 
 
+protocol ProfileFirstCellDelegate {
+    
+    func didTapFollowers(userID id: User.Identifier)
+    func didTapFollowing(userID id: User.Identifier)
+}
+
 class ProfileFirstCell: UICollectionViewCell {
     
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
-    var navDelegate: ProfileFirstCellDelegate?
+    var delegate: ProfileFirstCellDelegate?
     var userID: User.Identifier?
 
     override func awakeFromNib() {
@@ -35,14 +41,14 @@ class ProfileFirstCell: UICollectionViewCell {
         let g2 = UITapGestureRecognizer(target: self, action: #selector(didTapFollowing))
         followingLabel.addGestureRecognizer(g2)
     }
-    
+
     @objc func didTapFollowers() {
-        guard userID != nil else { return }
-        navDelegate?.didTapFollowers(userID: userID!)
+        guard let id = userID else { return }
+        delegate?.didTapFollowers(userID: id)
     }
     
     @objc func didTapFollowing() {
-        guard userID != nil else { return }
-        navDelegate?.didTapFollowing(userID: userID!)
+        guard let id = userID else { return }
+        delegate?.didTapFollowing(userID: id)
     }
 }

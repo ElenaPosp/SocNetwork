@@ -10,8 +10,9 @@ import UIKit
 import DataProvider
 
 protocol FeedCellDelegate {
-    func didTapAuthorAvatar(withID ID: User.Identifier)
-    func didTapLikesCount(postID: Post.Identifier)
+
+    func didTapAuthorAvatar(withID id: User.Identifier)
+    func didTapLikesCount(postID id: Post.Identifier)
 }
 
 class FeedTableViewCell: UITableViewCell {
@@ -19,30 +20,30 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var authorAvatarImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bigLikeImageView: UIImageView!
-    
+
     @IBOutlet weak var postTimeLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
-    
+    @IBOutlet weak var postDescriptionLabel: UILabel!
+
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likeImageView: UIImageView!
-    @IBOutlet weak var postDescriptionLabel: UILabel!
     
+    var delegate: FeedCellDelegate?
+    let postsProvider = DataProviders.shared.postsDataProvider
+    let usersProvider = DataProviders.shared.usersDataProvider
+
     var postID: Post.Identifier? {
         didSet {
             updateLikesCount()
         }
     }
 
-    var delegate: FeedCellDelegate?
-    let postsProvider = DataProviders.shared.postsDataProvider
-    let usersProvider = DataProviders.shared.usersDataProvider
-
     override func awakeFromNib() {
         super.awakeFromNib()
         bigLikeImageView.layer.opacity = 0
         setupInteractive()
     }
-    
+
     func setupInteractive() {
         
         authorAvatarImageView.isUserInteractionEnabled = true
@@ -65,19 +66,17 @@ class FeedTableViewCell: UITableViewCell {
 
     @objc func didSelectAuthorAvatar(){
         guard
-            postID != nil,
-            let authtorID = postsProvider.post(with: postID!)?.author
+            let id = postID,
+            let authtorID = postsProvider.post(with: id)?.author
         else { return }
         delegate?.didTapAuthorAvatar(withID: authtorID)
     }
 
     @objc func didTaplike(){
-        guard postID != nil else { return }
         addLike()
     }
 
     @objc func didTapBiglike(){
-        guard postID != nil else { return }
         playLikeAnimation()
         addLike()
     }
@@ -99,21 +98,23 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     private func addLike() {
-        let users = postsProvider.usersLikedPost(with: postID!)
+        guard let id = postID else { return }
+
+        let users = postsProvider.usersLikedPost(with: id)
         if users?.contains(usersProvider.currentUser().id) ?? false {
             likeImageView.tintColor = .lightGray
-            _ = postsProvider.unlikePost(with: postID!)
-            updateLikesCount()
+            _ = postsProvider.unlikePost(with: id)
         } else {
             likeImageView.tintColor = self.tintColor
-            _ = postsProvider.likePost(with: postID!)
-            updateLikesCount()
+            _ = postsProvider.likePost(with: id)
         }
+        updateLikesCount()
     }
 
     private func updateLikesCount() {
-        guard postID != nil else { return }
-        let likesCount = postsProvider.post(with: postID!)?.likedByCount
+        guard let id = postID else { return }
+        
+        let likesCount = postsProvider.post(with: id)?.likedByCount
         likesLabel.text = "Likes: \(likesCount ?? 0)"
     }
 }

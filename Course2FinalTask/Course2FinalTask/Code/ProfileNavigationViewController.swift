@@ -10,17 +10,12 @@ import UIKit
 import DataProvider
 
 
-protocol ProfileFirstCellDelegate {
-
-    func didTapFollowers(userID id: User.Identifier)
-    func didTapFollowing(userID id: User.Identifier)
-}
-
 class ProfileNavigationViewController: UINavigationController {
 
 }
 
 extension ProfileNavigationViewController: ProfileFirstCellDelegate {
+
     func didTapFollowers(userID id: User.Identifier) {
         let vc = UsersListViewController()
         vc.delegate = self
@@ -37,13 +32,12 @@ extension ProfileNavigationViewController: ProfileFirstCellDelegate {
 }
 
 extension ProfileNavigationViewController: UsersListDelegare {
-    func openPrifile(withID id: User.Identifier) {
+
+    func openProfile(withID id: User.Identifier) {
         let vc = ProfileViewController()
         guard let user = DataProviders.shared.usersDataProvider.user(with: id) else { return }
         vc.profile = user
-        vc.navDelegate = self
+        vc.delegate = self
         self.pushViewController(vc, animated: true)
     }
-    
-    
 }
