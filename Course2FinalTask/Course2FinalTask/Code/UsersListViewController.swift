@@ -10,11 +10,16 @@ import Foundation
 import UIKit
 import DataProvider
 
+protocol UsersListDelegare {
+    func openPrifile(withID id: User.Identifier)
+}
 
 class UsersListViewController: UIViewController {
 
     let cellIdentifier = String(describing: UITableViewCell.self)
     var users: [User] = []
+    var profileDelegate: ProfileNavigationViewController?
+    var delegate: UsersListDelegare?
 
     lazy var usersTableView: UITableView = {
         let table = UITableView(frame: self.view.frame)
@@ -36,7 +41,10 @@ class UsersListViewController: UIViewController {
 }
 
 extension UsersListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        delegate?.openPrifile(withID: users[indexPath.row].id)
+    }
 }
 
 extension UsersListViewController: UITableViewDataSource {

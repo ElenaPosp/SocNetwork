@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import DataProvider
 
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
@@ -16,22 +17,23 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func setup() {
-        let feedVC = FeedNavigationViewController()
-        let profileVC = ProfileNavigationViewController()
         
-        let profileTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        profileTitle.textAlignment = .center
-        profileTitle.text = "Profile"
-        profileVC.navigationBar.addSubview(profileTitle)
+        let feedVC = FeedViewController()
+        let navFeedVC = FeedNavigationViewController(rootViewController: feedVC)
+        feedVC.navDelegate = navFeedVC
+        feedVC.navigationItem.title = "Feed"
         
-        let feddTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        feddTitle.textAlignment = .center
-        feddTitle.text = "Feed"
-        feedVC.navigationBar.addSubview(feddTitle)
-
-        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
-        self.setViewControllers([feedVC,profileVC], animated: true)
+        let profileVC = ProfileViewController()
+        let navProfileVC = ProfileNavigationViewController(rootViewController: profileVC)
+        profileVC.navDelegate = navProfileVC
+        profileVC.profile = DataProviders.shared.usersDataProvider.currentUser()
+        profileVC.isMain = true
+        profileVC.navigationItem.title = "Profile"
+        
+        
+        navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
+        navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
+        self.setViewControllers([navFeedVC,navProfileVC], animated: true)
     }
 }
 

@@ -34,8 +34,13 @@ class FeedViewController: UIViewController  {
         let nib = UINib(nibName: cellIdentifier, bundle: nil)
         feedTableView.register(nib, forCellReuseIdentifier: cellIdentifier)
         
+//        setupNavigationBar()
     }
 
+    func setupNavigationBar() {
+        navigationItem.title = "Feed"
+    }
+    
     private func setupTableView() {
         view.addSubview(feedTableView)
         feedTableView.delegate = self

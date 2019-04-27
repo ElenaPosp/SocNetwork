@@ -11,7 +11,6 @@ import DataProvider
 
 protocol FeedCellDelegate {
     func didTapAuthorAvatar(withID ID: User.Identifier)
-    func didLikePhoto()
     func didTapLikesCount(postID: Post.Identifier)
 }
 
@@ -106,7 +105,7 @@ class FeedTableViewCell: UITableViewCell {
             _ = postsProvider.unlikePost(with: postID!)
             updateLikesCount()
         } else {
-            likeImageView.tintColor = .cyan
+            likeImageView.tintColor = self.tintColor
             _ = postsProvider.likePost(with: postID!)
             updateLikesCount()
         }

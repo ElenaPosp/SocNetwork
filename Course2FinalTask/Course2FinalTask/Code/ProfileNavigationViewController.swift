@@ -18,24 +18,32 @@ protocol ProfileFirstCellDelegate {
 
 class ProfileNavigationViewController: UINavigationController {
 
-    override func viewDidLoad() {
-        let profVC = ProfileViewController()
-        profVC.navDelegate = self
-        profVC.profile = DataProviders.shared.usersDataProvider.currentUser()
-        self.addChildViewController(profVC)
-    }
 }
 
 extension ProfileNavigationViewController: ProfileFirstCellDelegate {
     func didTapFollowers(userID id: User.Identifier) {
         let vc = UsersListViewController()
+        vc.delegate = self
         vc.users = DataProviders.shared.usersDataProvider.usersFollowingUser(with: id) ?? []
         self.pushViewController(vc, animated: true)
     }
-
+    
     func didTapFollowing(userID id: User.Identifier) {
         let vc = UsersListViewController()
+        vc.delegate = self
         vc.users = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id) ?? []
         self.pushViewController(vc, animated: true)
     }
+}
+
+extension ProfileNavigationViewController: UsersListDelegare {
+    func openPrifile(withID id: User.Identifier) {
+        let vc = ProfileViewController()
+        guard let user = DataProviders.shared.usersDataProvider.user(with: id) else { return }
+        vc.profile = user
+        vc.navDelegate = self
+        self.pushViewController(vc, animated: true)
+    }
+    
+    
 }

@@ -11,6 +11,7 @@ import DataProvider
 
 class ProfileViewController: UIViewController {
 
+    var isMain: Bool = false
     let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
     let firstCellIdentifier = String(describing: ProfileFirstCell.self)
 
@@ -29,6 +30,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        
+        if !isMain {
+            setupNavigationBar()
+        }
     }
 
     private func setupCollectionView() {
@@ -46,6 +51,10 @@ class ProfileViewController: UIViewController {
 
         let nib2 = UINib(nibName: firstCellIdentifier, bundle: nil)
         profileCollectionView.register(nib2, forCellWithReuseIdentifier: firstCellIdentifier)
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.title = profile?.fullName
     }
 }
 
