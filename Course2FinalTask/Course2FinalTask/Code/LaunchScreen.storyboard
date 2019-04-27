@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--View Controller-->
         <scene sceneID="sQa-Fc-MdN">
             <objects>
                 <viewController id="nb9-B1-CFr" sceneMemberID="viewController">
@@ -20,13 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kYK-Ic-68D"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile" id="Bkr-R9-J5C"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="profile" id="Bkr-R9-J5C"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHP-0F-uk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="633" y="577"/>
         </scene>
-        <!--Feed-->
+        <!--View Controller-->
         <scene sceneID="1of-FJ-SZO">
             <objects>
                 <viewController id="I2Z-kY-sDQ" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rXd-6G-Dsw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed" id="bPh-1H-LFH"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="feed" id="bPh-1H-LFH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7s-it-GsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
