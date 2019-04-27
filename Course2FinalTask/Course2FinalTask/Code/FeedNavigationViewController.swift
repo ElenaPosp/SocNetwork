@@ -22,6 +22,7 @@ extension FeedNavigationViewController: FeedCellDelegate {
             DataProviders.shared.usersDataProvider.user(with: $0)
         })
         vc.users = users ?? []
+        vc.navigationItem.title = "Likes"
         self.pushViewController(vc, animated: true)
     }
 
@@ -40,6 +41,7 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
         let vc = UsersListViewController()
         vc.delegate = self
         vc.users = DataProviders.shared.usersDataProvider.usersFollowingUser(with: id) ?? []
+        vc.navigationItem.title = "Followers"
         self.pushViewController(vc, animated: true)
     }
     
@@ -47,6 +49,7 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
         let vc = UsersListViewController()
         vc.delegate = self
         vc.users = DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id) ?? []
+        vc.navigationItem.title = "Following"
         self.pushViewController(vc, animated: true)
     }
 }

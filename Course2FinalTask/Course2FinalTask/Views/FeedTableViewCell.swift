@@ -40,6 +40,7 @@ class FeedTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         bigLikeImageView.layer.opacity = 0
         setupInteractive()
     }

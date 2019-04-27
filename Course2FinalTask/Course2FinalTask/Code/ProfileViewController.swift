@@ -33,6 +33,16 @@ class ProfileViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.hidesBarsOnSwipe = false
+    }
+
     private func setupCollectionView() {
         if let id = profile?.id {
             posts = DataProviders.shared.postsDataProvider.findPosts(by: id) ?? []
