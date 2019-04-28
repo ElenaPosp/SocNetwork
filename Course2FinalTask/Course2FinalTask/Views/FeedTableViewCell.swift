@@ -88,13 +88,13 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     private func playLikeAnimation() {
-        let endValue: CGFloat = 1
-        let anim = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
-        anim.duration = 0.2
-        anim.fromValue = 0
-        anim.toValue = endValue
+
+        let anim = CAKeyframeAnimation(keyPath: #keyPath(CALayer.opacity))
+        anim.values = [0,1,1,0]
+        anim.keyTimes = [0, 0.33, 0.66, 1]
+        anim.duration = 0.3
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        anim.autoreverses = true
+        anim.isAdditive = true
         bigLikeImageView.layer.add(anim, forKey: "opacity")
     }
     
