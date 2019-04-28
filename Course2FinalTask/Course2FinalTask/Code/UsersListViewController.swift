@@ -19,8 +19,8 @@ class UsersListViewController: UIViewController {
 
     let cellIdentifier = String(describing: UITableViewCell.self)
     var users: [User] = []
-    var profileDelegate: ProfileNavigationViewController?
     var delegate: UsersListDelegare?
+    private var selectedIndexPath: IndexPath?
 
     lazy var usersTableView: UITableView = {
         let table = UITableView(frame: self.view.frame)
@@ -39,12 +39,18 @@ class UsersListViewController: UIViewController {
         usersTableView.dataSource = self
         usersTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let indexPath = selectedIndexPath else { return }
+        usersTableView.deselectRow(at: indexPath, animated: false)
+    }
 }
 
 extension UsersListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         delegate?.openProfile(withID: users[indexPath.row].id)
+        selectedIndexPath = indexPath
     }
 }
 

@@ -14,7 +14,7 @@ class FeedViewController: UIViewController  {
     var delegate: FeedCellDelegate?
 
     let posts = DataProviders.shared.postsDataProvider.feed()
-    let cellIdentifier = String(describing: FeedTableViewCell.self)
+    private let cellIdentifier = String(describing: FeedTableViewCell.self)
     
     lazy var dateFormatter: DateFormatter = {
         let a = DateFormatter()
@@ -33,6 +33,11 @@ class FeedViewController: UIViewController  {
         
         let cellNib = UINib(nibName: cellIdentifier, bundle: nil)
         feedTableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = false
     }
 
     private func setupTableView() {

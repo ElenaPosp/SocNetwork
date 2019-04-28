@@ -11,9 +11,8 @@ import DataProvider
 
 class ProfileViewController: UIViewController {
 
-    var isMain: Bool = false
-    let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
-    let firstCellIdentifier = String(describing: ProfileFirstCell.self)
+    private let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
+    private let firstCellIdentifier = String(describing: ProfileFirstCell.self)
 
     var profile: User?
     var posts: [Post] = []
@@ -27,10 +26,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-
-        if !isMain {
-            setupNavigationBar()
-        }
+        setupNavigationBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {

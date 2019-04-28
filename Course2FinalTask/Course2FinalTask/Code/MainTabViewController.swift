@@ -27,8 +27,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let navProfileVC = ProfileNavigationViewController(rootViewController: profileVC)
         profileVC.delegate = navProfileVC
         profileVC.profile = DataProviders.shared.usersDataProvider.currentUser()
-        profileVC.isMain = true
-        profileVC.navigationItem.title = "Profile"
         
         navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
         navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
