@@ -22,24 +22,25 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let navFeedVC = FeedNavigationViewController(rootViewController: feedVC)
         feedVC.delegate = navFeedVC
         feedVC.navigationItem.title = "Feed"
-        
+
         let profileVC = ProfileViewController()
         let navProfileVC = ProfileNavigationViewController(rootViewController: profileVC)
         profileVC.delegate = navProfileVC
-        
+
         let addPhotoVC = AddPhotoViewController()
-        addPhotoVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(named: "plus"), tag: 3)
-        
-        
+        let navAddPhotoVC = AddPhotoNavigationViewController(rootViewController: addPhotoVC)
+        addPhotoVC.navigationItem.title = "New post"
+
+        navAddPhotoVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(named: "plus"), tag: 3)
         navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
         navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
-        
+
         DataProviders.shared.usersDataProvider.currentUser(queue: QProvider.gueue()) {
             profileVC.profile = $0
             feedVC.currentUser = $0
         }
 
-        self.setViewControllers([navFeedVC,addPhotoVC,navProfileVC], animated: true)
+        self.setViewControllers([navFeedVC,navAddPhotoVC,navProfileVC], animated: true)
     }
 }
 
