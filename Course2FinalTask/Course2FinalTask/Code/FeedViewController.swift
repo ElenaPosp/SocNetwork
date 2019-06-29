@@ -9,11 +9,39 @@
 import UIKit
 import DataProvider
 
+class Loading {
+    static let anim: UIActivityIndicatorView = {
+        let d = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: loadindView.center.x, y: loadindView.center.y), size: CGSize(width: 1, height: 1)))
+
+        return d
+    }()
+
+    static var loadindView: UIView = {
+        let a = UIView(frame: UIApplication.shared.windows.first!.frame)
+        a.backgroundColor = .red
+//        a.addSubview(anim)
+        
+        //        a.backgroundColor = UIColor(white: 0.5, alpha: <#T##CGFloat#>)
+        return a
+    }()
+    static func start() {
+        UIApplication.shared.keyWindow!.addSubview(loadindView)
+        loadindView.addSubview(anim)
+        anim.startAnimating()
+    }
+    
+    static func stop() {
+        anim.stopAnimating()
+        loadindView.removeFromSuperview()
+    }
+}
 class FeedViewController: UIViewController  {
 
     var delegate: FeedCellDelegate?
-
-    let posts = DataProviders.shared.postsDataProvider.feed()
+    var currentUser: User?
+    var posts: [Post] = []
+    
+    
     private let cellIdentifier = String(describing: FeedTableViewCell.self)
     
     lazy var dateFormatter: DateFormatter = {
@@ -29,8 +57,18 @@ class FeedViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Loading.start()
         setupTableView()
         
+        DataProviders.shared.postsDataProvider.feed(queue: QProvider.gueue()) { [weak self] (postArr) in
+            self?.posts = postArr ?? []
+            DispatchQueue.main.async {
+//                sleep(5)
+                self?.feedTableView.reloadData()
+                Loading.stop()
+            }
+            
+        }
         let cellNib = UINib(nibName: cellIdentifier, bundle: nil)
         feedTableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
     }
@@ -44,6 +82,10 @@ class FeedViewController: UIViewController  {
         view.addSubview(feedTableView)
         feedTableView.delegate = self
         feedTableView.dataSource = self
+    }
+    
+    func setUpLoadingView() {
+//        view.addSubview()
     }
 }
 
@@ -65,6 +107,7 @@ extension FeedViewController: UITableViewDataSource {
         let cell = feedTableView.dequeueReusableCell(withIdentifier: cellIdentifier,
                                                      for: indexPath) as! FeedTableViewCell
 
+        cell.currentUser = currentUser
         cell.authorAvatarImageView.image = post.authorAvatar
         cell.authorNameLabel.text = post.authorUsername
         cell.postImageView.image = post.image

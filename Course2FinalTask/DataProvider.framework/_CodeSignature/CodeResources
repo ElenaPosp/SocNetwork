@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/DataProvider-Swift.h</key>
 		<data>
-		quAXM+tHoc9kjf7K1GXyxsDfZIo=
+		eWdfxQKfEkBPFFBgoUUWUCqt/1g=
 		</data>
 		<key>Headers/DataProvider.h</key>
 		<data>
@@ -42,15 +42,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Q7e6VXqAkmYyou3aZBmrPRkYxaY=
+		gIPZ+Uxiwu5ofIYksMYkSy/gTiI=
 		</data>
 		<key>Modules/DataProvider.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		IiH2oa2m1fk0VW4a5UMn1eUg0oA=
+		+BqR7AxKwhR1RlJxM6SA+LoTLXI=
 		</data>
 		<key>Modules/DataProvider.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		nTJlbymgqOOeAoNwvkA1jDTSQgU=
+		DlX8OhKyRBZrNC1Kzle/G8hO/aM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -216,6 +216,70 @@
 		<data>
 		E159wO0JXEv+vgVQnqOe+SOGKvQ=
 		</data>
+		<key>new1.jpg</key>
+		<data>
+		ebMlEm1TDO2LlkfX5WLID4QKN74=
+		</data>
+		<key>new2.jpg</key>
+		<data>
+		i7uXrE1qZZhWVPryW3Mw9K6A070=
+		</data>
+		<key>new3.jpg</key>
+		<data>
+		8HKxEyM9n/2JJvLaGgoufprkB24=
+		</data>
+		<key>new4.jpg</key>
+		<data>
+		pobL42nbqpI4QyPLxPTw1Ga93JY=
+		</data>
+		<key>new5.jpg</key>
+		<data>
+		nQSX/bAf88rOSz5IQ1kQGS2EAxg=
+		</data>
+		<key>new6.jpg</key>
+		<data>
+		2omKhw3zXc5IvU4TC3MxHPWVW+c=
+		</data>
+		<key>new7.jpg</key>
+		<data>
+		kgA3y9YtJrT3p7FVcgUM9t9jUD0=
+		</data>
+		<key>new8.jpg</key>
+		<data>
+		OLS2NSfwmW8Y27/gWo+XcxJt8F0=
+		</data>
+		<key>newThumb1.jpg</key>
+		<data>
+		FOKK4QHXobjsirRd6cCTQa0Qlas=
+		</data>
+		<key>newThumb2.jpg</key>
+		<data>
+		SHwCDQ61ObXS1D57lsEh0kr/X8M=
+		</data>
+		<key>newThumb3.jpg</key>
+		<data>
+		+LO7u6iLwVnq1jM1fcHbaf/rnAQ=
+		</data>
+		<key>newThumb4.jpg</key>
+		<data>
+		kEnVD6HEOIi76py5vLnRY18DNV8=
+		</data>
+		<key>newThumb5.jpg</key>
+		<data>
+		/buzZAFxsAzYapkBGevR9ZQTvu4=
+		</data>
+		<key>newThumb6.jpg</key>
+		<data>
+		Ar61FjrPOQoVCaYc8OplhlVNgzU=
+		</data>
+		<key>newThumb7.jpg</key>
+		<data>
+		0UtT1zxUOvdRoehgGO2C9sfQAGw=
+		</data>
+		<key>newThumb8.jpg</key>
+		<data>
+		xm/RIiLb5c747A2YXrZLBQnVO9M=
+		</data>
 		<key>sport1.jpg</key>
 		<data>
 		YoxRNJQxXBrC+63HDzjdQ4sGlt4=
@@ -292,7 +356,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0QCSg9fF/CDFql+7ywie+FExTW4PMOVOgEpqClkqOi0=
+			y1zw2lcIkilUzZuCnN5Tam3C9GC3p+JyRcJb2HOZv4Q=
 			</data>
 		</dict>
 		<key>Headers/DataProvider.h</key>
@@ -306,14 +370,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AkITEPrVO/E/s2NWLlWT+53WCdNB9AGYhVR4MdtrCng=
+			FMHyyBFvHb1+P2p5vG9ALDrhZuYSM467XrPuSdcIqM8=
 			</data>
 		</dict>
 		<key>Modules/DataProvider.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8Isf+4rm9g79+/8GbzOoLtk7Zmrgxv/SVi2h4zvSrrk=
+			Bcw3CI2y9tLpuqQbKICxBzsSOvyDqWXtI4oBJomZryc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -601,6 +665,118 @@
 			<key>hash2</key>
 			<data>
 			aIZR0169A3ch445kh6RJ13y9HrMql7stwcvHrs5tOzU=
+			</data>
+		</dict>
+		<key>new1.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ujpd6WsRY6MXCMIUlGOgHZSpx0DJ4V1qzTQp/KtGM6U=
+			</data>
+		</dict>
+		<key>new2.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MvNHf2KIqrlk4neKYIRRSxw0fnHTUF93JTwiqncoezE=
+			</data>
+		</dict>
+		<key>new3.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hV6OWshHt5iZMKAI5+yRRzQq/dvDp/I7V091G+EvXGw=
+			</data>
+		</dict>
+		<key>new4.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vIpXmQUM5jTPKf6Ef+xnQMWnOUiJ7JzIe3FDivajaVM=
+			</data>
+		</dict>
+		<key>new5.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+rEe9IRf0hQUnPzl0qPl2A9yqV59jMTduokl4BMFGXQ=
+			</data>
+		</dict>
+		<key>new6.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			k2D+ICyxy0DtBGIbm/IVeX/0YfJ0w1eqzpYFZ6+iaPE=
+			</data>
+		</dict>
+		<key>new7.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2Jnyc/7Kh4aftsRxiTbYm+dm4OPfW0Izzh+ag+EqhHs=
+			</data>
+		</dict>
+		<key>new8.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wuwsr3hD6cfqMXvA5DHktqq6h4UVk6arghtlzFFmCA0=
+			</data>
+		</dict>
+		<key>newThumb1.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jTlXDBIYmUj61qrikQBcxE8wuDsIDJMzM6LlXmEq0y0=
+			</data>
+		</dict>
+		<key>newThumb2.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xq0WCXKuGZqD7bHHEkygWUA/XFNm+wCUQfVrbDvMJNY=
+			</data>
+		</dict>
+		<key>newThumb3.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QbugOVkBcSslDDmK5rzpa7ToYJSypA++oS+QtAeAIZ0=
+			</data>
+		</dict>
+		<key>newThumb4.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fOF2MRL1zKm87jARnEVIAKRJwW1tmjJXRu/ZzaRhOBs=
+			</data>
+		</dict>
+		<key>newThumb5.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fYB1gEMcUh4aqZHrZKJBIjjCvwP1jv7OxJuFdtlkKKE=
+			</data>
+		</dict>
+		<key>newThumb6.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8/AH+C/j2gvwq7n8lidIPMCTgl/PW0t8gTWlNKZ4aFE=
+			</data>
+		</dict>
+		<key>newThumb7.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vJQxhq6W0rHm9OG6CWaVOY/f+hkKSLGwXUNwO9agpbc=
+			</data>
+		</dict>
+		<key>newThumb8.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			f4uMrON3/IfKdwCjsXfCfBOCSZTeDDryA6/zpz4/U0Y=
 			</data>
 		</dict>
 		<key>sport1.jpg</key>

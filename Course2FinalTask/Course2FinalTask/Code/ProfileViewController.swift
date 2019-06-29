@@ -14,7 +14,11 @@ class ProfileViewController: UIViewController {
     private let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
     private let firstCellIdentifier = String(describing: ProfileFirstCell.self)
 
-    var profile: User?
+    var profile: User? {
+        didSet {
+            setupCollectionView()
+        }
+    }
     var posts: [Post] = []
 
     var delegate: ProfileFirstCellDelegate?
@@ -25,7 +29,6 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
         setupNavigationBar()
     }
 
@@ -40,11 +43,16 @@ class ProfileViewController: UIViewController {
     }
 
     private func setupCollectionView() {
+
         if let id = profile?.id {
-            posts = DataProviders.shared.postsDataProvider.findPosts(by: id) ?? []
+            DataProviders.shared.postsDataProvider.findPosts(by: id, queue: QProvider.gueue()) {[weak self] in
+                self?.posts = $0 ?? []
+                DispatchQueue.main.async {
+                    self?.view.addSubview(self!.profileCollectionView)
+                }
+            }
         }
 
-        view.addSubview(profileCollectionView)
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
         profileCollectionView.backgroundColor = .white

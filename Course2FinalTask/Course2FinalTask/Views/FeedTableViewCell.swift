@@ -29,6 +29,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var likeImageView: UIImageView!
     
     var delegate: FeedCellDelegate?
+    var currentUser: User?
     let postsProvider = DataProviders.shared.postsDataProvider
     let usersProvider = DataProviders.shared.usersDataProvider
 
@@ -66,11 +67,14 @@ class FeedTableViewCell: UITableViewCell {
     }
 
     @objc func didSelectAuthorAvatar(){
-        guard
-            let id = postID,
-            let authtorID = postsProvider.post(with: id)?.author
-        else { return }
-        delegate?.didTapAuthorAvatar(withID: authtorID)
+       
+        guard let id = postID else { return }
+        postsProvider.post(with: id, queue: QProvider.gueue()) {
+            guard let authtorID = $0?.author else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.delegate?.didTapAuthorAvatar(withID: authtorID)
+            }
+        }
     }
 
     @objc func didTaplike(){
@@ -101,22 +105,43 @@ class FeedTableViewCell: UITableViewCell {
     private func addLike() {
         guard let id = postID else { return }
 
-        let users = postsProvider.usersLikedPost(with: id)
-        if users?.contains(usersProvider.currentUser().id) ?? false {
-            likeImageView.tintColor = .lightGray
-            _ = postsProvider.unlikePost(with: id)
-        } else {
-            likeImageView.tintColor = self.tintColor
-            _ = postsProvider.likePost(with: id)
+        postsProvider.usersLikedPost(with: id, queue: QProvider.gueue()) { [weak self] in
+
+            self?.setupLike($0, id: id)
+            self?.updateLikesCount()
         }
-        updateLikesCount()
+        
+        
     }
 
+    private func setupLike(_ users: [User]?, id: Post.Identifier) {
+        if (users?.contains { $0.id == currentUser?.id }) ?? false {
+            postsProvider.unlikePost(with: id, queue: QProvider.gueue()) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    self?.likeImageView.tintColor = .lightGray
+                    self?.updateLikesCount()
+                }
+            }
+
+        } else {
+            postsProvider.likePost(with: id, queue: QProvider.gueue()) { _ in
+                DispatchQueue.main.async { [weak self] in
+                    self?.likeImageView.tintColor = self?.tintColor
+                    self?.updateLikesCount()
+                }
+            }
+
+        }
+    }
+    
     private func updateLikesCount() {
         guard let id = postID else { return }
         
-        let likesCount = postsProvider.post(with: id)?.likedByCount
-        likesLabel.text = "Likes: \(likesCount ?? 0)"
+        postsProvider.post(with: id, queue: QProvider.gueue()) { post in
+            DispatchQueue.main.async { [weak self] in
+                self?.likesLabel.text = "Likes: \(post?.likedByCount ?? 0)"
+            }
+        }
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2B859122BE1FA900D37433 /* TempQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859022BE1FA900D37433 /* TempQueue.swift */; };
+		0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */; };
 		0BA764FC226224270026AA6A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA764F6226224270026AA6A /* ProfileViewController.swift */; };
 		0BA764FD226224270026AA6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA764F7226224270026AA6A /* LaunchScreen.storyboard */; };
 		0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA764F8226224270026AA6A /* FeedViewController.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B2B859022BE1FA900D37433 /* TempQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempQueue.swift; sourceTree = "<group>"; };
+		0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0BA764F6226224270026AA6A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BA764F7226224270026AA6A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BA764F8226224270026AA6A /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		74B7927B202B3427006BCB41 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				0B2B859022BE1FA900D37433 /* TempQueue.swift */,
 				0BA764F7226224270026AA6A /* LaunchScreen.storyboard */,
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
 				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
@@ -125,6 +130,7 @@
 				0BA764FA226224270026AA6A /* ProfileNavigationViewController.swift */,
 				0BA764F6226224270026AA6A /* ProfileViewController.swift */,
 				0BA76524226C59090026AA6A /* UsersListViewController.swift */,
+				0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BA764FF226224270026AA6A /* FeedNavigationViewController.swift in Sources */,
+				0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */,
 				0BA76516226276C00026AA6A /* FeedTableViewCell.swift in Sources */,
 				0BA7651C2263CC630026AA6A /* ProfileCollectionViewCell.swift in Sources */,
 				0BA765202263CEDC0026AA6A /* ProfileFirstCell.swift in Sources */,
@@ -228,6 +235,7 @@
 				0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
 				0BA76525226C59090026AA6A /* UsersListViewController.swift in Sources */,
+				0B2B859122BE1FA900D37433 /* TempQueue.swift in Sources */,
 				0BA76500226224270026AA6A /* ProfileNavigationViewController.swift in Sources */,
 				0BA76501226224270026AA6A /* MainTabViewController.swift in Sources */,
 			);
