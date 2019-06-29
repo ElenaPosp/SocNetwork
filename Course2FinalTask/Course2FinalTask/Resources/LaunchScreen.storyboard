@@ -27,6 +27,22 @@
             <point key="canvasLocation" x="633" y="577"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="b00-m7-Jcm">
+            <objects>
+                <viewController id="sKB-41-3BH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eif-EB-7Pd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yYh-Im-1cS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="plus" id="iSg-qi-XyF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4XU-5b-3Ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="221"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="1of-FJ-SZO">
             <objects>
                 <viewController id="I2Z-kY-sDQ" sceneMemberID="viewController">
@@ -52,8 +68,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="I2Z-kY-sDQ" kind="relationship" relationship="viewControllers" id="Fpd-If-sbI"/>
                         <segue destination="nb9-B1-CFr" kind="relationship" relationship="viewControllers" id="odl-6f-htQ"/>
+                        <segue destination="sKB-41-3BH" kind="relationship" relationship="viewControllers" id="siS-hn-gDD"/>
+                        <segue destination="I2Z-kY-sDQ" kind="relationship" relationship="viewControllers" id="Fpd-If-sbI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ELl-t9-3PJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -63,6 +80,7 @@
     </scenes>
     <resources>
         <image name="feed" width="25" height="25"/>
+        <image name="plus" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
     </resources>
 </document>

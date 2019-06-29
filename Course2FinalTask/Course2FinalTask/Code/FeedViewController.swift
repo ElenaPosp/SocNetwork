@@ -9,32 +9,6 @@
 import UIKit
 import DataProvider
 
-class Loading {
-    static let anim: UIActivityIndicatorView = {
-        let d = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: loadindView.center.x, y: loadindView.center.y), size: CGSize(width: 1, height: 1)))
-
-        return d
-    }()
-
-    static var loadindView: UIView = {
-        let a = UIView(frame: UIApplication.shared.windows.first!.frame)
-        a.backgroundColor = .red
-//        a.addSubview(anim)
-        
-        //        a.backgroundColor = UIColor(white: 0.5, alpha: <#T##CGFloat#>)
-        return a
-    }()
-    static func start() {
-        UIApplication.shared.keyWindow!.addSubview(loadindView)
-        loadindView.addSubview(anim)
-        anim.startAnimating()
-    }
-    
-    static func stop() {
-        anim.stopAnimating()
-        loadindView.removeFromSuperview()
-    }
-}
 class FeedViewController: UIViewController  {
 
     var delegate: FeedCellDelegate?
