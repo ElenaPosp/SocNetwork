@@ -35,7 +35,7 @@ class FeedTableViewCell: UITableViewCell {
 
     var postID: Post.Identifier? {
         didSet {
-            updateLikesCount()
+            setupLikesCount()
         }
     }
 
@@ -87,8 +87,8 @@ class FeedTableViewCell: UITableViewCell {
     }
     
     @objc func didTapLikesCount() {
-        guard postID != nil else { return }
-        delegate?.didTapLikesCount(postID: postID!)
+        guard let postID = postID else { return }
+        delegate?.didTapLikesCount(postID: postID)
     }
     
     private func playLikeAnimation() {
@@ -130,13 +130,27 @@ class FeedTableViewCell: UITableViewCell {
                     self?.updateLikesCount()
                 }
             }
-
         }
     }
     
+    private func setupLikesCount() {
+        guard let id = postID else { return }
+
+        postsProvider.post(with: id, queue: QProvider.gueue()) { post in
+            let oper = BlockOperation { [weak self] in
+                self?.likesLabel.text = "Likes: \(post?.likedByCount ?? 0)"
+                loagingProvider.stop()
+            }
+
+            if let mainOper = loagingProvider.mainFeedOperation {
+                oper.addDependency(mainOper)
+            }
+            loagingProvider.operationQueue.addOperation(oper)
+        }
+    }
+
     private func updateLikesCount() {
         guard let id = postID else { return }
-        
         postsProvider.post(with: id, queue: QProvider.gueue()) { post in
             DispatchQueue.main.async { [weak self] in
                 self?.likesLabel.text = "Likes: \(post?.likedByCount ?? 0)"

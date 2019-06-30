@@ -8,30 +8,48 @@
 
 import UIKit
 
+let loagingProvider = Loading()
+
 class Loading {
-    static var isLoading = false
-    static let anim: UIActivityIndicatorView = {
-        let frame = CGRect(origin: CGPoint(x: loadindView.center.x, y: loadindView.center.y),
-                           size: CGSize(width: 1, height: 1))
-        let indicator = UIActivityIndicatorView(frame: frame )
-        return indicator
-    }()
-    
-    static var loadindView: UIView = {
+    var isLoading = false
+    let anim: UIActivityIndicatorView
+
+    var loadindView: UIView = {
         guard let window = UIApplication.shared.windows.first else { fatalError() }
         let a = UIView(frame: window.frame)
         a.backgroundColor = UIColor(white: 0.2, alpha: 0.9)
         return a
     }()
 
-    static func start() {
-        UIApplication.shared.keyWindow!.addSubview(loadindView)
-        loadindView.addSubview(anim)
-        anim.startAnimating()
+    init() {
+        let frame = CGRect(origin: CGPoint(x: loadindView.center.x, y: loadindView.center.y),
+                           size: CGSize(width: 1, height: 1))
+        anim = UIActivityIndicatorView(frame: frame)
     }
 
-    static func stop() {
+    func start() {
+        guard
+            !isLoading,
+            let window = UIApplication.shared.keyWindow
+        else { return }
+
+        window.addSubview(loadindView)
+        loadindView.addSubview(anim)
+        anim.startAnimating()
+        isLoading = true
+    }
+
+    func stop() {
+        guard isLoading else { return }
         anim.stopAnimating()
         loadindView.removeFromSuperview()
+        isLoading = false
+    }
+
+    var mainFeedOperation: BlockOperation?
+    let operationQueue = OperationQueue.main
+    func executeFeedOperation() {
+        guard let oper = mainFeedOperation else { return }
+        operationQueue.addOperation(oper)
     }
 }
