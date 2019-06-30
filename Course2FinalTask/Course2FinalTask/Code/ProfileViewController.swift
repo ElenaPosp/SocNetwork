@@ -23,9 +23,7 @@ class ProfileViewController: UIViewController {
 
     var delegate: ProfileFirstCellDelegate?
 
-    lazy var profileCollectionView: UICollectionView = {
-        return UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-    }()
+    lazy var profileCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,8 +112,8 @@ extension ProfileViewController:UICollectionViewDataSource {
             return firstCell
         }
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier,
-                                                      for: indexPath as IndexPath) as! ProfileCollectionViewCell
+        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier,
+                                                             for: indexPath as IndexPath) as! ProfileCollectionViewCell
         cell.image.image = posts[indexPath.row-1].image
         return cell
     }

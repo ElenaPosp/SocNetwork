@@ -30,6 +30,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let addPhotoVC = AddPhotoViewController()
         let navAddPhotoVC = AddPhotoNavigationViewController(rootViewController: addPhotoVC)
         addPhotoVC.navigationItem.title = "New post"
+        addPhotoVC.delegate = navAddPhotoVC
 
         navAddPhotoVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(named: "plus"), tag: 3)
         navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)

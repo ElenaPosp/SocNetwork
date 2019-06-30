@@ -11,3 +11,18 @@ import UIKit
 class AddPhotoNavigationViewController: UINavigationController {
     
 }
+
+extension AddPhotoNavigationViewController: AddPhotoDelegate {
+    func didSelectPhoto(_ img: UIImage) {
+        
+        let vc = FiltersViewController()
+        vc.delegate = self
+        vc.title = "Filters"
+        vc.targetImage = img
+        pushViewController(vc, animated: true)
+    }
+}
+
+extension AddPhotoNavigationViewController: FiltersDelegate {
+    
+}

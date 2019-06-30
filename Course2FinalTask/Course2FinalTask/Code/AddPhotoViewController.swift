@@ -9,8 +9,13 @@
 import UIKit
 import DataProvider
 
+protocol AddPhotoDelegate {
+    func didSelectPhoto(_ img: UIImage)
+}
+
 class AddPhotoViewController: UIViewController {
 
+    var delegate: AddPhotoDelegate?
     private let collectionCellIdentifier = String(describing: ProfileCollectionViewCell.self)
     var photos: [UIImage] = []
 
@@ -51,7 +56,7 @@ extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //
+        delegate?.didSelectPhoto(photos[indexPath.item])
     }
     
     

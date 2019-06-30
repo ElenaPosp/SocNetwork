@@ -17,7 +17,7 @@ class Loading {
     var loadindView: UIView = {
         guard let window = UIApplication.shared.windows.first else { fatalError() }
         let a = UIView(frame: window.frame)
-        a.backgroundColor = UIColor(white: 0.2, alpha: 0.9)
+        a.backgroundColor = UIColor(white: 0, alpha: 0.7)
         return a
     }()
 

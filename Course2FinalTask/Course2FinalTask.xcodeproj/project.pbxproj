@@ -11,6 +11,9 @@
 		0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */; };
 		0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */; };
 		0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */; };
+		0B39BD8E22C8D95D002F0F3F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */; };
+		0B39BD9122C8E29A002F0F3F /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8F22C8E29A002F0F3F /* FilterCollectionViewCell.swift */; };
+		0B39BD9222C8E29A002F0F3F /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B39BD9022C8E29A002F0F3F /* FilterCollectionViewCell.xib */; };
 		0BA764FC226224270026AA6A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA764F6226224270026AA6A /* ProfileViewController.swift */; };
 		0BA764FD226224270026AA6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA764F7226224270026AA6A /* LaunchScreen.storyboard */; };
 		0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA764F8226224270026AA6A /* FeedViewController.swift */; };
@@ -49,6 +52,9 @@
 		0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProvider.swift; sourceTree = "<group>"; };
 		0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoNavigationViewController.swift; sourceTree = "<group>"; };
+		0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		0B39BD8F22C8E29A002F0F3F /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B39BD9022C8E29A002F0F3F /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		0BA764F6226224270026AA6A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0BA764F7226224270026AA6A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BA764F8226224270026AA6A /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 				0BA7651F2263CEDB0026AA6A /* ProfileFirstCell.xib */,
 				0BA7651A2263CC630026AA6A /* ProfileCollectionViewCell.swift */,
 				0BA7651B2263CC630026AA6A /* ProfileCollectionViewCell.xib */,
+				0B39BD8F22C8E29A002F0F3F /* FilterCollectionViewCell.swift */,
+				0B39BD9022C8E29A002F0F3F /* FilterCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 				0BA76524226C59090026AA6A /* UsersListViewController.swift */,
 				0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */,
 				0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */,
+				0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				74B7925F202B3254006BCB41 /* Assets.xcassets in Resources */,
 				0BA764FD226224270026AA6A /* LaunchScreen.storyboard in Resources */,
 				0BA765212263CEDC0026AA6A /* ProfileFirstCell.xib in Resources */,
+				0B39BD9222C8E29A002F0F3F /* FilterCollectionViewCell.xib in Resources */,
 				0BA7651D2263CC630026AA6A /* ProfileCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +246,9 @@
 				0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */,
 				0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */,
 				0BA76516226276C00026AA6A /* FeedTableViewCell.swift in Sources */,
+				0B39BD8E22C8D95D002F0F3F /* FiltersViewController.swift in Sources */,
 				0BA7651C2263CC630026AA6A /* ProfileCollectionViewCell.swift in Sources */,
+				0B39BD9122C8E29A002F0F3F /* FilterCollectionViewCell.swift in Sources */,
 				0BA765202263CEDC0026AA6A /* ProfileFirstCell.swift in Sources */,
 				0BA764FC226224270026AA6A /* ProfileViewController.swift in Sources */,
 				0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */,
