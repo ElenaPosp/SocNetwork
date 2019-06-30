@@ -24,8 +24,7 @@ extension FeedNavigationViewController: FeedCellDelegate {
         }
         
         DataProviders.shared.postsDataProvider.usersLikedPost(with: postID,
-                                                              queue: QProvider.gueue())
-        {
+                                                              queue: QProvider.gueue()) {
             vc.users = $0 ?? []
             DispatchQueue.main.async { action() }
         }
