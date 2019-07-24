@@ -16,6 +16,8 @@ class ProfileNavigationViewController: UINavigationController {
 extension ProfileNavigationViewController: ProfileFirstCellDelegate {
 
     func didTapFollowers(userID id: User.Identifier) {
+        loagingProvider.start()
+
         let vc = UsersListViewController()
         vc.delegate = self
         let action: ()->() = { [weak self] in
@@ -33,6 +35,7 @@ extension ProfileNavigationViewController: ProfileFirstCellDelegate {
     }
     
     func didTapFollowing(userID id: User.Identifier) {
+        loagingProvider.start()
         let vc = UsersListViewController()
         vc.delegate = self
         let action: ()->() = { [weak self] in
@@ -58,6 +61,7 @@ extension ProfileNavigationViewController: UsersListDelegare {
             vc.delegate = self
             self?.pushViewController(vc, animated: true)
         }
+
         DataProviders.shared.usersDataProvider.user(with: id, queue: QProvider.gueue()) {
             vc.profile = $0
             DispatchQueue.main.async { action() }

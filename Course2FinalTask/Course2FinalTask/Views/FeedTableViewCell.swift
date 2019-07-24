@@ -36,6 +36,7 @@ class FeedTableViewCell: UITableViewCell {
     var postID: Post.Identifier? {
         didSet {
             setupLikesCount()
+            loagingProvider.stop()
         }
     }
 
@@ -69,6 +70,7 @@ class FeedTableViewCell: UITableViewCell {
     @objc func didSelectAuthorAvatar(){
        
         guard let id = postID else { return }
+        DispatchQueue.main.async { loagingProvider.start() }
         postsProvider.post(with: id, queue: QProvider.gueue()) {
             guard let authtorID = $0?.author else { return }
             DispatchQueue.main.async { [weak self] in
@@ -106,12 +108,9 @@ class FeedTableViewCell: UITableViewCell {
         guard let id = postID else { return }
 
         postsProvider.usersLikedPost(with: id, queue: QProvider.gueue()) { [weak self] in
-
             self?.setupLike($0, id: id)
             self?.updateLikesCount()
         }
-        
-        
     }
 
     private func setupLike(_ users: [User]?, id: Post.Identifier) {
@@ -139,7 +138,6 @@ class FeedTableViewCell: UITableViewCell {
         postsProvider.post(with: id, queue: QProvider.gueue()) { post in
             let oper = BlockOperation { [weak self] in
                 self?.likesLabel.text = "Likes: \(post?.likedByCount ?? 0)"
-                loagingProvider.stop()
             }
 
             if let mainOper = loagingProvider.mainFeedOperation {

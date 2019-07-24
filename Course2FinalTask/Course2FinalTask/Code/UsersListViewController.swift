@@ -28,6 +28,7 @@ class UsersListViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
+        loagingProvider.start()
         super.viewDidLoad()
         setupTableView()
     }
@@ -49,6 +50,7 @@ class UsersListViewController: UIViewController {
 
 extension UsersListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        loagingProvider.start()
         delegate?.openProfile(withID: users[indexPath.row].id)
         selectedIndexPath = indexPath
     }
@@ -61,6 +63,7 @@ extension UsersListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 { loagingProvider.stop() }
 
         let newCell = usersTableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         newCell.textLabel?.text = users[indexPath.row].fullName

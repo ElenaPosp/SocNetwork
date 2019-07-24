@@ -12,10 +12,4 @@ class FilterCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var filterNameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
 }

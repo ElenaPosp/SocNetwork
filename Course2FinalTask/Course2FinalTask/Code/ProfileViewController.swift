@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController {
     lazy var profileCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
 
     override func viewDidLoad() {
+        loagingProvider.start()
         super.viewDidLoad()
         setupNavigationBar()
     }
@@ -100,6 +101,7 @@ extension ProfileViewController:UICollectionViewDataSource {
 
         if indexPath.row == 0 {
 
+            loagingProvider.stop()
             let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier,
                                                                for: indexPath as IndexPath) as! ProfileFirstCell
             firstCell.avatarImageView.image = profile.avatar

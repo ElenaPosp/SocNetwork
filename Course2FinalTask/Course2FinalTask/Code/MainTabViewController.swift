@@ -42,7 +42,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
             feedVC.currentUser = user
         }
 
-        self.setViewControllers([navFeedVC,navAddPhotoVC,navProfileVC], animated: true)
+        setViewControllers([navFeedVC,navAddPhotoVC,navProfileVC], animated: true)
     }
 }
 

@@ -56,6 +56,7 @@ extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        loagingProvider.start()
         delegate?.didSelectPhoto(photos[indexPath.item])
     }
     
@@ -72,6 +73,4 @@ extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return -1
     }
-    
-    
 }

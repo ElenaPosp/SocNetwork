@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B2B859122BE1FA900D37433 /* TempQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859022BE1FA900D37433 /* TempQueue.swift */; };
+		0B17752222E7779500635E05 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17752022E7779500635E05 /* DescriptionViewController.swift */; };
 		0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */; };
 		0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */; };
 		0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B2B859022BE1FA900D37433 /* TempQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempQueue.swift; sourceTree = "<group>"; };
+		0B17752022E7779500635E05 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProvider.swift; sourceTree = "<group>"; };
 		0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoNavigationViewController.swift; sourceTree = "<group>"; };
@@ -133,9 +133,8 @@
 		74B7927B202B3427006BCB41 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				0B2B859022BE1FA900D37433 /* TempQueue.swift */,
-				0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */,
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
+				0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */,
 				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
 				0BA764F9226224270026AA6A /* FeedNavigationViewController.swift */,
 				0BA764F8226224270026AA6A /* FeedViewController.swift */,
@@ -145,6 +144,7 @@
 				0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */,
 				0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */,
 				0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */,
+				0B17752022E7779500635E05 /* DescriptionViewController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -243,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BA764FF226224270026AA6A /* FeedNavigationViewController.swift in Sources */,
+				0B17752222E7779500635E05 /* DescriptionViewController.swift in Sources */,
 				0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */,
 				0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */,
 				0BA76516226276C00026AA6A /* FeedTableViewCell.swift in Sources */,
@@ -254,7 +255,6 @@
 				0BA764FE226224270026AA6A /* FeedViewController.swift in Sources */,
 				74B79258202B3254006BCB41 /* AppDelegate.swift in Sources */,
 				0BA76525226C59090026AA6A /* UsersListViewController.swift in Sources */,
-				0B2B859122BE1FA900D37433 /* TempQueue.swift in Sources */,
 				0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */,
 				0BA76500226224270026AA6A /* ProfileNavigationViewController.swift in Sources */,
 				0BA76501226224270026AA6A /* MainTabViewController.swift in Sources */,

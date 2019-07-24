@@ -15,6 +15,7 @@ class FeedNavigationViewController: UINavigationController {
 extension FeedNavigationViewController: FeedCellDelegate {
 
     func didTapLikesCount(postID: Post.Identifier) {
+        loagingProvider.start()
         let vc = UsersListViewController()
         vc.delegate = self
 
@@ -48,6 +49,7 @@ extension FeedNavigationViewController: FeedCellDelegate {
 extension FeedNavigationViewController: ProfileFirstCellDelegate {
 
     func didTapFollowers(userID id: User.Identifier) {
+        loagingProvider.start()
         let vc = UsersListViewController()
         vc.delegate = self
         let action: ()->() = { [weak self] in
@@ -62,6 +64,7 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
     }
     
     func didTapFollowing(userID id: User.Identifier) {
+        loagingProvider.start()
         let vc = UsersListViewController()
         vc.delegate = self
 
