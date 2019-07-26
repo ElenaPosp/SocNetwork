@@ -15,6 +15,10 @@ class ProfileNavigationViewController: UINavigationController {
 
 extension ProfileNavigationViewController: ProfileFirstCellDelegate {
 
+    func showError() {
+        showLoadingError()
+    }
+
     func didTapFollowers(userID id: User.Identifier) {
         loagingProvider.start()
 
@@ -24,12 +28,10 @@ extension ProfileNavigationViewController: ProfileFirstCellDelegate {
             vc.navigationItem.title = "Followers"
             self?.pushViewController(vc, animated: true)
         }
-        DataProviders.shared.usersDataProvider.usersFollowingUser(with: id,
-                                                                  queue: QProvider.gueue())
-        {
-            vc.users = $0 ?? []
+        DataProviders.shared.usersDataProvider.usersFollowingUser(with: id, queue: QProvider.gueue()) {
+            guard let users = $0 else { vc.users = []; self.showLoadingError(); return }
+            vc.users = users
             DispatchQueue.main.async { action() }
-
         }
 
     }
@@ -42,11 +44,10 @@ extension ProfileNavigationViewController: ProfileFirstCellDelegate {
             vc.navigationItem.title = "Following"
             self?.pushViewController(vc, animated: true)
         }
-        
-        DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id,
-                                                                   queue: QProvider.gueue())
-       {
-            vc.users = $0 ?? []
+
+        DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id, queue: QProvider.gueue()) {
+            guard let users = $0 else { vc.users = []; self.showLoadingError(); return }
+            vc.users = users
             DispatchQueue.main.async { action() }
         }
     }
@@ -56,14 +57,16 @@ extension ProfileNavigationViewController: UsersListDelegare {
 
     func openProfile(withID id: User.Identifier) {
         let vc = ProfileViewController()
-        
+
         let action: ()->() = { [weak self] in
             vc.delegate = self
             self?.pushViewController(vc, animated: true)
         }
 
         DataProviders.shared.usersDataProvider.user(with: id, queue: QProvider.gueue()) {
-            vc.profile = $0
+            guard let profile = $0
+            else { self.showLoadingError(); return }
+            vc.profile = profile
             DispatchQueue.main.async { action() }
         }
     }

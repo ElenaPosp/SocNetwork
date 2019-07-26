@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DataProvider
 
 protocol FiltersDelegate {
     
@@ -17,6 +16,7 @@ class FiltersViewController: UIViewController {
     var delegate: FiltersDelegate?
     var targetImage: UIImage?
 
+    private var isCanceled = false
     private var mainImageView: UIImageView?
     private var filteredImages = [UIImage]()
     private let collectionCellIdentifier = String(describing: FilterCollectionViewCell.self)
@@ -38,9 +38,6 @@ class FiltersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainImage()
-        DispatchQueue.global().async { [weak self] in
-            self?.setupFilters()
-        }
 
         setupCollectionView()
         setupNextButton()
@@ -63,8 +60,25 @@ class FiltersViewController: UIViewController {
         for index in 0...filters.count-1 { applyFilter(at: index) }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isCanceled = true
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        isCanceled = false
+        DispatchQueue.global().async { [weak self] in
+            self?.setupFilters()
+        }
+    }
+
     private func applyFilter(at item: Int) {
-        guard let image = targetImage else { return }
+        
+        guard
+            !isCanceled,
+            let image = targetImage else { return }
+
         print("Set \(item)"+filters[item])
         let filter = CIFilter(name: filters[item])
 

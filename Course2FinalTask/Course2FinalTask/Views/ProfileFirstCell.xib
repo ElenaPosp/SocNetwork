@@ -29,33 +29,50 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-Gy-t85">
                         <rect key="frame" x="86" y="8" width="242" height="72"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-2F-DRw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-2F-DRw">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzY-K1-WmZ">
-                                <rect key="frame" x="0.0" y="43" width="44.5" height="21"/>
+                                <rect key="frame" x="0.0" y="43" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-dp-80D">
-                                <rect key="frame" x="197.5" y="43" width="44.5" height="21"/>
+                                <rect key="frame" x="197" y="43" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i95-Tt-atr">
+                                <rect key="frame" x="212" y="0.0" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YmV-s5-36h"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <connections>
+                                    <action selector="followButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="KNW-5D-Ny4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="bQY-dp-80D" secondAttribute="bottom" constant="8" id="72H-cH-cOh"/>
                             <constraint firstAttribute="trailing" secondItem="bQY-dp-80D" secondAttribute="trailing" id="87M-OQ-WDo"/>
                             <constraint firstItem="PzY-K1-WmZ" firstAttribute="leading" secondItem="j0t-Gy-t85" secondAttribute="leading" id="dRr-La-15i"/>
+                            <constraint firstItem="i95-Tt-atr" firstAttribute="top" secondItem="P1i-2F-DRw" secondAttribute="top" id="eK4-cF-ZBK"/>
                             <constraint firstItem="P1i-2F-DRw" firstAttribute="top" secondItem="j0t-Gy-t85" secondAttribute="top" id="i9T-hv-8hK"/>
                             <constraint firstItem="P1i-2F-DRw" firstAttribute="leading" secondItem="j0t-Gy-t85" secondAttribute="leading" id="kNr-DM-ep6"/>
+                            <constraint firstItem="i95-Tt-atr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="P1i-2F-DRw" secondAttribute="trailing" constant="16" id="lQW-hz-3C4"/>
                             <constraint firstAttribute="bottom" secondItem="PzY-K1-WmZ" secondAttribute="bottom" constant="8" id="neY-k6-JkZ"/>
+                            <constraint firstItem="i95-Tt-atr" firstAttribute="trailing" secondItem="bQY-dp-80D" secondAttribute="trailing" id="r80-hg-yPV"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,11 +89,12 @@
             <size key="customSize" width="344" height="88"/>
             <connections>
                 <outlet property="avatarImageView" destination="g7q-6Z-KqY" id="KpU-FS-SrM"/>
+                <outlet property="followButton" destination="i95-Tt-atr" id="wy9-cc-GYt"/>
                 <outlet property="followersLabel" destination="PzY-K1-WmZ" id="D3Q-42-NgO"/>
                 <outlet property="followingLabel" destination="bQY-dp-80D" id="GIf-hf-C0y"/>
                 <outlet property="userNameLabel" destination="P1i-2F-DRw" id="ZgS-ee-v26"/>
             </connections>
-            <point key="canvasLocation" x="112" y="54"/>
+            <point key="canvasLocation" x="111.59420289855073" y="53.571428571428569"/>
         </collectionViewCell>
     </objects>
 </document>

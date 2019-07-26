@@ -44,8 +44,15 @@ class ProfileViewController: UIViewController {
     private func setupCollectionView() {
 
         if let id = profile?.id {
+            
             DataProviders.shared.postsDataProvider.findPosts(by: id, queue: QProvider.gueue()) {[weak self] in
-                self?.posts = $0 ?? []
+                guard let postArr = $0 else {
+                    self?.posts = []
+                    self?.showLoadingError()
+                    return
+                }
+                self?.posts = postArr
+                
                 DispatchQueue.main.async {
                     self?.view.addSubview(self!.profileCollectionView)
                 }

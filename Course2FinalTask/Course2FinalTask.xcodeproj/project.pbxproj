@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B17752222E7779500635E05 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17752022E7779500635E05 /* DescriptionViewController.swift */; };
 		0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */; };
-		0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */; };
+		0B39BD8A22C7A698002F0F3F /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8922C7A698002F0F3F /* LoadingService.swift */; };
 		0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */; };
 		0B39BD8E22C8D95D002F0F3F /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */; };
 		0B39BD9122C8E29A002F0F3F /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8F22C8E29A002F0F3F /* FilterCollectionViewCell.swift */; };
@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		0B17752022E7779500635E05 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
-		0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProvider.swift; sourceTree = "<group>"; };
+		0B39BD8922C7A698002F0F3F /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoNavigationViewController.swift; sourceTree = "<group>"; };
 		0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		0B39BD8F22C8E29A002F0F3F /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				74B79257202B3254006BCB41 /* AppDelegate.swift */,
-				0B39BD8922C7A698002F0F3F /* LoadingProvider.swift */,
+				0B39BD8922C7A698002F0F3F /* LoadingService.swift */,
 				0BA764FB226224270026AA6A /* MainTabViewController.swift */,
 				0BA764F9226224270026AA6A /* FeedNavigationViewController.swift */,
 				0BA764F8226224270026AA6A /* FeedViewController.swift */,
@@ -245,7 +245,7 @@
 				0BA764FF226224270026AA6A /* FeedNavigationViewController.swift in Sources */,
 				0B17752222E7779500635E05 /* DescriptionViewController.swift in Sources */,
 				0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */,
-				0B39BD8A22C7A698002F0F3F /* LoadingProvider.swift in Sources */,
+				0B39BD8A22C7A698002F0F3F /* LoadingService.swift in Sources */,
 				0BA76516226276C00026AA6A /* FeedTableViewCell.swift in Sources */,
 				0B39BD8E22C8D95D002F0F3F /* FiltersViewController.swift in Sources */,
 				0BA7651C2263CC630026AA6A /* ProfileCollectionViewCell.swift in Sources */,

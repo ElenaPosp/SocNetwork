@@ -37,8 +37,14 @@ class FeedViewController: UIViewController  {
             self?.feedTableView.reloadData()
         }
         loagingProvider.mainFeedOperation = feedOperation
-        DataProviders.shared.postsDataProvider.feed(queue: QProvider.gueue()) { [weak self] (postArr) in
-            self?.posts = postArr ?? []
+        DataProviders.shared.postsDataProvider.feed(queue: QProvider.gueue()) { [weak self] in
+            
+            guard let postArr = $0 else {
+                self?.posts = []
+                self?.showLoadingError()
+                return
+            }
+            self?.posts = postArr
             loagingProvider.executeFeedOperation()
         }
     }

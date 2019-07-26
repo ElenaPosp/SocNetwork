@@ -26,7 +26,8 @@ extension FeedNavigationViewController: FeedCellDelegate {
         
         DataProviders.shared.postsDataProvider.usersLikedPost(with: postID,
                                                               queue: QProvider.gueue()) {
-            vc.users = $0 ?? []
+            guard let users = $0 else { vc.users = []; self.showLoadingError(); return}
+            vc.users = users
             DispatchQueue.main.async { action() }
         }
 
@@ -40,13 +41,18 @@ extension FeedNavigationViewController: FeedCellDelegate {
         }
 
         DataProviders.shared.usersDataProvider.user(with: id, queue: QProvider.gueue()) {
-            vc.profile = $0
+            guard let user = $0 else { self.showLoadingError(); return }
+            vc.profile = user
             DispatchQueue.main.async { action() }
         }
     }
 }
 
 extension FeedNavigationViewController: ProfileFirstCellDelegate {
+
+    func showError() {
+        showLoadingError()
+    }
 
     func didTapFollowers(userID id: User.Identifier) {
         loagingProvider.start()
@@ -58,7 +64,8 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
         }
 
         DataProviders.shared.usersDataProvider.usersFollowingUser(with: id, queue: QProvider.gueue()) {
-            vc.users = $0 ?? []
+            guard let users = $0 else { vc.users = []; self.showLoadingError(); return}
+            vc.users = users
             DispatchQueue.main.async { action() }
         }
     }
@@ -74,7 +81,8 @@ extension FeedNavigationViewController: ProfileFirstCellDelegate {
         }
 
         DataProviders.shared.usersDataProvider.usersFollowedByUser(with: id, queue: QProvider.gueue()) {
-            vc.users = $0 ?? []
+            guard let users = $0 else { vc.users = []; self.showLoadingError(); return}
+            vc.users = users
             DispatchQueue.main.async { action() }
         }
     }
@@ -91,7 +99,8 @@ extension FeedNavigationViewController: UsersListDelegare {
             self?.pushViewController(vc, animated: true)
         }
         DataProviders.shared.usersDataProvider.user(with: id, queue: QProvider.gueue()) {
-            user = $0
+            guard let newUser = $0 else { self.showLoadingError(); return }
+            user = newUser
             DispatchQueue.main.async { action() }
         }
     }

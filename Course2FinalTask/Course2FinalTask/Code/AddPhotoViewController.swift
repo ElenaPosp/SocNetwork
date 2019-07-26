@@ -38,9 +38,7 @@ class AddPhotoViewController: UIViewController {
         view.addSubview(galeryCollectionView)
 
         photos = DataProviders.shared.photoProvider.photos()
-        print(photos.count)
     }
-
 }
 
 extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {

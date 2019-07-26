@@ -37,19 +37,12 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
 
         DataProviders.shared.usersDataProvider.currentUser(queue: QProvider.gueue()) {
-            guard let user = $0 else { self.showError();  return }
+            guard let user = $0 else { self.showLoadingError();  return }
+            loagingProvider.currentUserId = user.id
             profileVC.profile = user
             feedVC.currentUser = user
         }
 
         setViewControllers([navFeedVC,navAddPhotoVC,navProfileVC], animated: true)
-    }
-}
-
-private extension UIViewController {
-    func showError() {
-        let ac = UIAlertController(title: "Loading error", message: nil, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(ac,animated: true)
     }
 }

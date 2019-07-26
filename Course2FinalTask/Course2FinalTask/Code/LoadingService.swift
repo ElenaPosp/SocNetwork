@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DataProvider
 
 class QProvider {
 
@@ -21,6 +22,8 @@ class Loading {
     
     private let lock = NSLock()
     private var boolLoading = false
+    
+    var currentUserId: User.Identifier?
 
     var isLoading: Bool {
         get { return self.boolLoading }
@@ -47,6 +50,28 @@ class Loading {
     }
 
     func start() {
+        if Thread.isMainThread {
+            syncStart()
+            return
+        }
+
+        DispatchQueue.main.async { [weak self] in
+            self?.syncStart()
+        }
+    }
+
+    func stop() {
+        if Thread.isMainThread {
+            syncStop()
+            return
+        }
+
+        DispatchQueue.main.async { [weak self] in
+            self?.syncStop()
+        }
+    }
+
+    private func syncStart() {
         guard
             !isLoading,
             let window = UIApplication.shared.keyWindow
@@ -57,7 +82,7 @@ class Loading {
         activityIndicator.startAnimating()
     }
 
-    func stop() {
+    private func syncStop() {
         guard isLoading else { return }
         activityIndicator.stopAnimating()
         loadindView.removeFromSuperview()
@@ -70,5 +95,19 @@ class Loading {
     func executeFeedOperation() {
         guard let oper = mainFeedOperation else { return }
         operationQueue.addOperation(oper)
+    }
+}
+
+extension UIViewController {
+    
+    func showLoadingError() {
+        
+        let ac = UIAlertController(title: "Unknown error!", message: "Please, try again later.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _  in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        ac.addAction(action)
+        loagingProvider.stop()
+        present(ac, animated: true, completion: nil)
     }
 }
