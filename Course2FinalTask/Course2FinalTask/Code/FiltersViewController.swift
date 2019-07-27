@@ -2,7 +2,7 @@
 //  FiltersViewController.swift
 //  Course2FinalTask
 //
-//  Created by Елена Поспелова on 30/06/2019.
+//  Created by Елена Поспелова on 30/04/2019.
 //  Copyright © 2019 e-Legion. All rights reserved.
 //
 

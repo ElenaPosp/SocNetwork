@@ -2,7 +2,7 @@
 //  AddPhotoViewController.swift
 //  Course2FinalTask
 //
-//  Created by Елена Поспелова on 22/06/2019.
+//  Created by Елена on 29/04/2019.
 //  Copyright © 2019 e-Legion. All rights reserved.
 //
 

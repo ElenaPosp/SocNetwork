@@ -2,7 +2,7 @@
 //  FeedTableViewCell.swift
 //  Course2FinalTask
 //
-//  Created by Елена Поспелова on 14/04/2019.
+//  Created by Елена on 14/04/2019.
 //  Copyright © 2019 e-Legion. All rights reserved.
 //
 
