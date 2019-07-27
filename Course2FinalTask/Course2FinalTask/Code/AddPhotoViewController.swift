@@ -10,8 +10,10 @@ import UIKit
 import DataProvider
 
 protocol AddPhotoDelegate {
-    func didSelectPhoto(_ img: UIImage)
+
+    func didSelectPhoto(atIndex index: Int)
 }
+
 
 class AddPhotoViewController: UIViewController {
 
@@ -31,7 +33,7 @@ class AddPhotoViewController: UIViewController {
     private func setupCollectionView() {
         let cell = UINib(nibName: collectionCellIdentifier, bundle: nil)
         galeryCollectionView.register(cell, forCellWithReuseIdentifier: collectionCellIdentifier)
-        
+
         galeryCollectionView.delegate = self
         galeryCollectionView.dataSource = self
         galeryCollectionView.backgroundColor = .white
@@ -41,11 +43,23 @@ class AddPhotoViewController: UIViewController {
     }
 }
 
+extension AddPhotoViewController: DescriptionViewDeledate {
+
+    func photoShared() {
+        navigationController?.popToRootViewController(animated: false)
+        if let feedVC = tabBarController?.viewControllers?.first?.childViewControllers.first as? FeedViewController {
+            feedVC.photoShared()
+        }
+        tabBarController?.selectedViewController = tabBarController?.viewControllers?[0]
+    }
+}
+
 extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier,
                                                       for: indexPath as IndexPath) as! ProfileCollectionViewCell
@@ -55,9 +69,8 @@ extension AddPhotoViewController: UICollectionViewDelegateFlowLayout, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         loagingProvider.start()
-        delegate?.didSelectPhoto(photos[indexPath.item])
+        delegate?.didSelectPhoto(atIndex: indexPath.item)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width

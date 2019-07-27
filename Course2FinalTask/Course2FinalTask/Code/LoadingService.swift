@@ -1,5 +1,5 @@
 //
-//  LoadingProvider.swift
+//  LoadingService.swift
 //  Course2FinalTask
 //
 //  Created by Елена Поспелова on 29/06/2019.
@@ -16,13 +16,14 @@ class QProvider {
     }
 }
 
-let loagingProvider = Loading()
+let loagingProvider = LoadingService()
 
-class Loading {
+class LoadingService {
     
     private let lock = NSLock()
     private var boolLoading = false
-    
+    private let activityIndicator: UIActivityIndicatorView
+
     var currentUserId: User.Identifier?
 
     var isLoading: Bool {
@@ -33,10 +34,8 @@ class Loading {
             lock.unlock()
         }
     }
-    
-    let activityIndicator: UIActivityIndicatorView
 
-    var loadindView: UIView = {
+    private var loadindView: UIView = {
         guard let window = UIApplication.shared.windows.first else { fatalError() }
         let a = UIView(frame: window.frame)
         a.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -98,16 +97,3 @@ class Loading {
     }
 }
 
-extension UIViewController {
-    
-    func showLoadingError() {
-        
-        let ac = UIAlertController(title: "Unknown error!", message: "Please, try again later.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _  in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        ac.addAction(action)
-        loagingProvider.stop()
-        present(ac, animated: true, completion: nil)
-    }
-}

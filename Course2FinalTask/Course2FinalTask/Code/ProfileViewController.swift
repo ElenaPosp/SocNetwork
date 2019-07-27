@@ -43,21 +43,7 @@ class ProfileViewController: UIViewController {
 
     private func setupCollectionView() {
 
-        if let id = profile?.id {
-            
-            DataProviders.shared.postsDataProvider.findPosts(by: id, queue: QProvider.gueue()) {[weak self] in
-                guard let postArr = $0 else {
-                    self?.posts = []
-                    self?.showLoadingError()
-                    return
-                }
-                self?.posts = postArr
-                
-                DispatchQueue.main.async {
-                    self?.view.addSubview(self!.profileCollectionView)
-                }
-            }
-        }
+        
 
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
@@ -68,6 +54,22 @@ class ProfileViewController: UIViewController {
 
         let firstCell = UINib(nibName: firstCellIdentifier, bundle: nil)
         profileCollectionView.register(firstCell, forCellWithReuseIdentifier: firstCellIdentifier)
+        
+        guard let id = profile?.id else { return }
+            
+        DataProviders.shared.postsDataProvider.findPosts(by: id, queue: QProvider.gueue()) {[weak self] in
+            guard let strSelf = self else { return }
+            guard let postArr = $0 else {
+                strSelf.posts = []
+                strSelf.showLoadingError()
+                return
+            }
+            strSelf.posts = postArr
+
+            DispatchQueue.main.async {
+                strSelf.view.addSubview(strSelf.profileCollectionView)
+            }
+        }
     }
 
     private func setupNavigationBar() {
@@ -102,23 +104,19 @@ extension ProfileViewController:UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let profile = profile else {
-            return UICollectionViewCell()
-        }
+        guard let profile = profile else { return UICollectionViewCell() }
 
         if indexPath.row == 0 {
-
             loagingProvider.stop()
-            let firstCell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier,
-                                                               for: indexPath as IndexPath) as! ProfileFirstCell
-            firstCell.avatarImageView.image = profile.avatar
-            firstCell.avatarImageView.layer.cornerRadius = firstCell.avatarImageView.frame.width/2
-            firstCell.userNameLabel.text = profile.fullName
-            firstCell.followersLabel.text = "Followers: \(profile.followedByCount)"
-            firstCell.followingLabel.text = "Following: \(profile.followsCount)"
-            firstCell.delegate = delegate
-            firstCell.userID = profile.id
-            return firstCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier,
+                                                          for: indexPath as IndexPath) as! ProfileFirstCell
+            cell.user = profile
+            cell.avatarImageView.image = profile.avatar
+            cell.userNameLabel.text = profile.fullName
+            cell.delegate = delegate
+            cell.followersLabel.text = "Followers: \(profile.followedByCount)"
+            cell.followingLabel.text = "Following: \(profile.followsCount)"
+            return cell
         }
 
         let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: collectionCellIdentifier,

@@ -32,9 +32,9 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         addPhotoVC.navigationItem.title = "New post"
         addPhotoVC.delegate = navAddPhotoVC
 
-        navAddPhotoVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(named: "plus"), tag: 3)
         navFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feed"), tag: 1)
-        navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 2)
+        navAddPhotoVC.tabBarItem = UITabBarItem(title: "Add", image: UIImage(named: "plus"), tag: 2)
+        navProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: 3)
 
         DataProviders.shared.usersDataProvider.currentUser(queue: QProvider.gueue()) {
             guard let user = $0 else { self.showLoadingError();  return }

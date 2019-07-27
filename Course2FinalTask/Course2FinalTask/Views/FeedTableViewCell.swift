@@ -148,6 +148,7 @@ class FeedTableViewCell: UITableViewCell {
     }
 
     private func updateLikesCount() {
+
         guard let id = postID else { return }
         postsProvider.post(with: id, queue: QProvider.gueue()) { post in
             DispatchQueue.main.async { [weak self] in

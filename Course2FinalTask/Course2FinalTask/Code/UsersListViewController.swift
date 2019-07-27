@@ -11,18 +11,18 @@ import UIKit
 import DataProvider
 
 protocol UsersListDelegare {
-
     func openProfile(withID id: User.Identifier)
 }
 
+
 class UsersListViewController: UIViewController {
 
-    let cellIdentifier = String(describing: UITableViewCell.self)
+    private let cellIdentifier = String(describing: UITableViewCell.self)
+    private var selectedIndexPath: IndexPath?
     var users: [User] = []
     var delegate: UsersListDelegare?
-    private var selectedIndexPath: IndexPath?
 
-    lazy var usersTableView: UITableView = {
+    private lazy var usersTableView: UITableView = {
         let table = UITableView(frame: self.view.frame)
         return table
     }()
@@ -33,22 +33,22 @@ class UsersListViewController: UIViewController {
         setupTableView()
     }
 
-    private func setupTableView() {
-        view.addSubview(usersTableView)
-        
-        usersTableView.delegate = self
-        usersTableView.dataSource = self
-        usersTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let indexPath = selectedIndexPath else { return }
         usersTableView.deselectRow(at: indexPath, animated: false)
     }
+
+    private func setupTableView() {
+        view.addSubview(usersTableView)
+        usersTableView.delegate = self
+        usersTableView.dataSource = self
+        usersTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    }
 }
 
 extension UsersListViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         loagingProvider.start()
         delegate?.openProfile(withID: users[indexPath.row].id)

@@ -61,6 +61,12 @@ class FeedViewController: UIViewController  {
         let cellNib = UINib(nibName: cellIdentifier, bundle: nil)
         feedTableView.register(cellNib, forCellReuseIdentifier: cellIdentifier)
     }
+    
+    func photoShared() {
+        navigationController?.popToRootViewController(animated: true)
+        feedTableView.reloadData()
+        feedTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
 }
 
 extension FeedViewController: UITableViewDelegate {

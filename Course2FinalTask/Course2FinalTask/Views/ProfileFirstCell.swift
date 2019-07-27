@@ -25,45 +25,43 @@ class ProfileFirstCell: UICollectionViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    var delegate: ProfileFirstCellDelegate?
+    var user: User? {
+        didSet {
+            setupButton()
+        }
+    }
+    
+    private var wantFollow: Bool = true
+    
     @IBAction func followButtonTapped(_ sender: Any) {
-        guard let id = userID else { return }
+        guard let id = user?.id else { return }
         loagingProvider.start()
-        if wantFollow {
 
+        if wantFollow {
             DataProviders.shared.usersDataProvider.follow(id, queue: QProvider.gueue()) { [weak self] in
-                if let _ = $0 {
-                    self?.updateButton(isFollowing: self?.wantFollow ?? false)
-                } else {
-                    self?.delegate?.showError()
-                }
-                loagingProvider.stop()
+               self?.finishFollowing($0)
             }
         } else {
-
             DataProviders.shared.usersDataProvider.unfollow(id, queue: QProvider.gueue()) { [weak self] in
-                if let _ = $0 {
-                    self?.updateButton(isFollowing: self?.wantFollow ?? false)
-                } else {
-                    self?.delegate?.showError()
-                }
-                loagingProvider.stop()
+                self?.finishFollowing($0)
             }
         }
-        
-        print(wantFollow)
     }
 
-    var delegate: ProfileFirstCellDelegate?
-    var userID: User.Identifier? {
-        didSet {
-            setupFollowButton()
+    func finishFollowing(_ user: User?) {
+        if let _ = user {
+            update(isFollowing: wantFollow)
+        } else {
+            loagingProvider.stop()
+            delegate?.showError()
         }
     }
-    private var wantFollow: Bool = true
 
     override func awakeFromNib() {
         super.awakeFromNib()
         setupInteractive()
+        setupElements()
     }
 
     func setupInteractive() {
@@ -77,39 +75,55 @@ class ProfileFirstCell: UICollectionViewCell {
         followingLabel.addGestureRecognizer(g2)
     }
 
-    func setupFollowButton() {
+    func setupElements() {
+        userNameLabel.text = user?.fullName
+        followingLabel.text = "Following: \(user?.followsCount ?? 0)"
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width/2
+
+    }
+
+    func setupButton() {
         followButton.isHidden = true
-        if userID == loagingProvider.currentUserId { return }
+        guard
+            let id = user?.id,
+            user?.id != loagingProvider.currentUserId
+        else { return }
+
         loagingProvider.start()
         followButton.layer.cornerRadius = 5
         followButton.contentEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 6)
         followButton.titleLabel?.font = .systemFont(ofSize: 15)
-        followButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        DataProviders.shared.usersDataProvider.usersFollowingUser(with: userID!,
-                                                                  queue: QProvider.gueue()) { [weak self ] followers in
+        DataProviders.shared.usersDataProvider.usersFollowingUser(with: id, queue: QProvider.gueue()) { [weak self ] followers in
             let users = followers ?? []
             let isFollowing = users.contains { $0.id  == loagingProvider.currentUserId }
-            self?.updateButton(isFollowing: isFollowing)
+            self?.update(isFollowing: isFollowing)
         }
     }
 
-    private func updateButton(isFollowing: Bool) {
+    private func update(isFollowing: Bool) {
+        guard let id = user?.id else { return }
         var title = "Follow"
         if isFollowing { title = "Unfollow" }
         wantFollow = !isFollowing
-        DispatchQueue.main.async { [weak self] in
-            self?.followButton.isHidden = false
-            self?.followButton.setTitle(title, for: .normal)
-            loagingProvider.stop()
+
+        DataProviders.shared.usersDataProvider.user(with: id, queue: QProvider.gueue()) {
+            guard let followers = $0?.followedByCount else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.followersLabel.text = "Followers: \(followers)"
+                self?.followButton.isHidden = false
+                self?.followButton.setTitle(title, for: .normal)
+                loagingProvider.stop()
+            }
         }
     }
+
     @objc func didTapFollowers() {
-        guard let id = userID else { return }
+        guard let id = user?.id else { return }
         delegate?.didTapFollowers(userID: id)
     }
     
     @objc func didTapFollowing() {
-        guard let id = userID else { return }
+        guard let id = user?.id else { return }
         delegate?.didTapFollowing(userID: id)
     }
 }

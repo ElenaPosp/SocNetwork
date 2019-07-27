@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B17752222E7779500635E05 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17752022E7779500635E05 /* DescriptionViewController.swift */; };
+		0B17752522EB629600635E05 /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17752422EB629600635E05 /* UIViewController+extensions.swift */; };
 		0B2B859322BE49FC00D37433 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */; };
 		0B39BD8A22C7A698002F0F3F /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8922C7A698002F0F3F /* LoadingService.swift */; };
 		0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		0B17752022E7779500635E05 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		0B17752422EB629600635E05 /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
 		0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0B39BD8922C7A698002F0F3F /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		0B39BD8B22C7B360002F0F3F /* AddPhotoNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoNavigationViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				0B2B859222BE49FC00D37433 /* AddPhotoViewController.swift */,
 				0B39BD8D22C8D95D002F0F3F /* FiltersViewController.swift */,
 				0B17752022E7779500635E05 /* DescriptionViewController.swift */,
+				0B17752422EB629600635E05 /* UIViewController+extensions.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				0B39BD8C22C7B360002F0F3F /* AddPhotoNavigationViewController.swift in Sources */,
 				0BA76500226224270026AA6A /* ProfileNavigationViewController.swift in Sources */,
 				0BA76501226224270026AA6A /* MainTabViewController.swift in Sources */,
+				0B17752522EB629600635E05 /* UIViewController+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
